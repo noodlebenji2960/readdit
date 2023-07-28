@@ -1,0 +1,73 @@
+@font-face {
+    font-family: IBMPlexSans;
+    src: url(../public/assets/IBMPlexSans-Regular.ttf);
+}
+
+:root{
+    font-family: IBMPlexSans;
+}
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, button, cite, code, del, dfn, em, img, input, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+html, body, #root{
+    background-color: #DAE0E6;
+}
+
+body {
+    margin-top: 50px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+i {
+    font-style: normal;
+}
+
+button{
+    cursor: pointer;
+}
+
+label{
+    user-select: none;
+}
+
+a{
+    color: var(--newCommunityTheme-linkText);
+    fill: var(--newCommunityTheme-linkText);
+    cursor: pointer;
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+input[type=search]::-ms-clear { display: none; width : 0; height: 0; }
+input[type=search]::-ms-reveal { display: none; width : 0; height: 0; }
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration { display: none; }
+
+:root {
+    --newCommunityTheme-actionIcon: #878A8C;
+    --newCommunityTheme-body: #1A1A1B;
+    --newCommunityTheme-bodyText: #D7DADC;
+    --newCommunityTheme-button: #d7dadc;
+    --newCommunityTheme-field: #272729;
+    --newCommunityTheme-line: #343536;
+    --newCommunityTheme-linkText: #0079D3;
+
+    --newCommunityTheme-postTransparent20: #141414;
+
+    --newRedditTheme-actionIcon: #878A8C;
+    --newRedditTheme-body: #1c1c1c;
+    --newRedditTheme-button: #0079D3;
+    --newRedditTheme-field: #F6F7F8;
+    --newRedditTheme-line: #EDEFF1;
+
+    fill: var(--newCommunityTheme-bodyText);
+}
