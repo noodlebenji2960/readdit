@@ -5,6 +5,7 @@ import {
     AiOutlineInfoCircle,
     AiOutlineStrikethrough,
     AiOutlineEyeInvisible,
+    AiOutlineRise,
 } from "react-icons/ai"
 import {
     BiHeading,
@@ -21,6 +22,7 @@ import {
     BsThreeDots,
     BsBookmark,
     BsFlag,
+    BsFire,
 } from "react-icons/bs"
 import { FaRegCommentAlt } from "react-icons/fa"
 import{
@@ -36,6 +38,7 @@ import {
     IoAddSharp,
     IoLogOutOutline,
     IoShirtOutline,
+    IoRocketOutline
 } from "react-icons/io5"
 import { TbTelescope, TbHelp } from "react-icons/tb"
 import {
@@ -50,18 +53,21 @@ import { HiHome } from "react-icons/hi"
 import { FiChevronDown } from "react-icons/fi"
 import {     
     MdFormatListBulleted,
-    MdFormatListNumbered
+    MdFormatListNumbered,
+    MdBarChart,
 } from "react-icons/md"
 import { 
     TiStarFullOutline,
     TiStarOutline,
+    TiStarburstOutline,
 } from "react-icons/ti"
 import { 
     TbShare3,
     TbArrowsSplit
 } from "react-icons/tb"
 import {
-    RiFileList2Fill
+    RiFileList2Fill,
+    RiLayoutRowLine
 } from "react-icons/ri"
 import { 
     RxVideo,
@@ -181,6 +187,7 @@ const reactIconsList = [
     AiOutlineInfoCircle,
     AiOutlineStrikethrough,
     AiOutlineEyeInvisible,
+    AiOutlineRise,
 
     BiHeading,
     BiShieldQuarter,
@@ -195,6 +202,7 @@ const reactIconsList = [
     BsThreeDots,
     BsBookmark,
     BsFlag,
+    BsFire,
 
     CiImageOn,
 
@@ -214,6 +222,7 @@ const reactIconsList = [
     IoAddSharp,
     IoLogOutOutline,
     IoShirtOutline,
+    IoRocketOutline,
 
     TbHelp,
     TbTelescope,
@@ -228,11 +237,14 @@ const reactIconsList = [
 
     MdFormatListBulleted,
     MdFormatListNumbered,
+    MdBarChart,
 
     TiStarFullOutline,
     TiStarOutline,
+    TiStarburstOutline,
 
     RiFileList2Fill,
+    RiLayoutRowLine,
 
     RxVideo,
     RxThickArrowUp, 
@@ -244,7 +256,6 @@ const reactIconsList = [
 const iconsList = reactIconsList.concat(customIconsList)
 
 function Icon(props){
-
     return (
         <>
             {iconsList.find((icon)=>{
