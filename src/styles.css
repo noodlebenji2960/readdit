@@ -25,7 +25,7 @@ button svg {
     font-size: smaller;
 }
 
-.commentInfo i{
+.commentInfo i {
     color: var(--newCommunityTheme-actionIcon);
 }
 
@@ -42,7 +42,7 @@ button svg {
     min-width: 20px;
 }
 
-.commentItem > span{
+.commentItem>span {
     grid-area: 1/2/2/3;
     min-width: 0;
 }
@@ -110,7 +110,7 @@ button svg {
     width: min-content;
 }
 
-.commentItemForm button{
+.commentItemForm button {
     height: 20px;
 }
 
@@ -121,7 +121,6 @@ button svg {
     outline: 1px solid var(--newCommunityTheme-line);
     outline-offset: -1px;
     border-radius: 3px;
-    padding-right: 3px;
     margin: 10px;
 }
 
@@ -161,7 +160,7 @@ button svg {
     padding: 4px 8px;
 }
 
-.textEditor>div span:last-child button:last-child{
+.textEditor>div span:last-child button:last-child {
     background-color: var(--newCommunityTheme-button);
     border: none;
     color: var(--newCommunityTheme-body);
@@ -219,7 +218,7 @@ span:has(.dropdown) {
     height: 100%;
 }
 
-header .dropdown{
+header .dropdown {
     transform: translateY(-7px);
     max-height: 80vh;
     min-width: 270px;
@@ -228,13 +227,14 @@ header .dropdown{
     border-radius: 0 0 4px 4px;
 }
 
-header span > span > .dropdown li:has(div button) div{
+header span>span>.dropdown li:has(div button) div {
     width: 100%;
 }
 
-header span > span > .dropdown li:has(div button) button:last-child{
+header span>span>.dropdown li:has(div button) button:last-child {
     width: min-content;
 }
+
 .dropdown {
     display: none;
     flex-direction: column;
@@ -260,7 +260,7 @@ header span > span > .dropdown li:has(div button) button:last-child{
 .dropdown::-webkit-scrollbar {
     width: 10px;
 }
-  
+
 /* Track */
 .dropdown::-webkit-scrollbar-track {
     background: var(--newCommunityTheme-line);
@@ -269,7 +269,7 @@ header span > span > .dropdown li:has(div button) button:last-child{
 }
 
 /* Handle */
-.dropdown::-webkit-scrollbar-thumb{
+.dropdown::-webkit-scrollbar-thumb {
     background: var(--newCommunityTheme-actionIcon);
     border-right: 5px solid var(--newCommunityTheme-body);
 }
@@ -279,15 +279,15 @@ header span > span > .dropdown li:has(div button) button:last-child{
     background: var(--newCommunityTheme-line);
 }
 
-.toggleFav{
+.toggleFav {
     color: var(--newRedditTheme-button) !important;
 }
 
-.dropdown button{
+.dropdown button {
     padding: 24px;
 }
 
-.dropdown div[role="heading"]{
+.dropdown div[role="heading"] {
     gap: 10px;
     fill: var(--newCommunityTheme-actionIcon);
     color: var(--newCommunityTheme-actionIcon);
@@ -299,11 +299,11 @@ header span > span > .dropdown li:has(div button) button:last-child{
     border-top: 2px solid var(--newCommunityTheme-bodyTextAlpha20);
 }
 
-header > span .dropdown li > div button:last-of-type{
+header>span .dropdown li>div button:last-of-type {
     color: var(--newCommunityTheme-button);
 }
 
-header > span .dropdown li div[role="heading"]{
+header>span .dropdown li div[role="heading"] {
     text-transform: uppercase;
     border: none !important;
     font-size: 0.6rem;
@@ -322,7 +322,7 @@ header > span .dropdown li div[role="heading"]{
     justify-content: space-between;
 }
 
-span:has(.dropdown) > button > *{
+span:has(.dropdown)>button>* {
     pointer-events: none;
 }
 
@@ -412,7 +412,7 @@ button[title]:hover::before {
     display: flex;
     align-items: center;
     flex-direction: column;
-    background:  var(--newCommunityTheme-postTransparent20);
+    background: var(--newCommunityTheme-postTransparent20);
     color: var(--newCommunityTheme-actionIcon);
     font-size: 0.8rem;
 }
@@ -500,7 +500,7 @@ button[title]:hover::before {
     color: var(--newCommunityTheme-actionIcon);
 }
 
-#postOverlay>div:last-of-type>div:nth-child(3) button:hover{
+#postOverlay>div:last-of-type>div:nth-child(3) button:hover {
     background-color: var(--newCommunityTheme-line);
 }
 
@@ -537,11 +537,11 @@ header div {
     height: 100%;
 }
 
-header>div{
+header>div {
     gap: 20px;
 }
 
-header > button:hover{
+header>button:hover {
     background: none !important;
 }
 
@@ -567,23 +567,23 @@ header>button {
     margin: 5px;
 }
 
-header span:has(.dropdown) > button{
+header span:has(.dropdown)>button {
     padding: 0 20px;
 }
 
-header span:has(.dropdownExpanded){
+header span:has(.dropdownExpanded) {
     margin: 6px 0px 0px 0px;
-    padding:7px 0px 0px 0px;
+    padding: 7px 0px 0px 0px;
     border-radius: 10px 10px 0px 0px !important;
     outline: 1px solid var(--newCommunityTheme-line);
     outline-offset: -7px;
 }
 
-header span:has(.dropdownExpanded) > button > *{
+header span:has(.dropdownExpanded)>button>* {
     transform: translateY(-6px);
 }
 
-header span:has(.dropdown):hover{
+header span:has(.dropdown):hover {
     border-radius: 13px;
     outline: 1px solid var(--newCommunityTheme-line);
     outline-offset: -7px;
@@ -677,44 +677,55 @@ header>div>span:last-of-type>button>svg:first-child {
 .user>i {
     font-weight: bold;
 }
+
 @media only screen and (max-width: 320px) {
-    #search-container{
+    #search-container {
         display: none;
     }
 }
 
 @media only screen and (max-width: 611px) {
 
-    header div:last-child > button:nth-child(1){
+    header div:last-child>button:nth-child(1) {
         display: none;
     }
-    #search-container{
+
+    #search-container {
         width: 25px;
         margin: 0;
     }
-    #search-container:hover{
+
+    #search-container:hover {
         cursor: pointer;
         background-color: var(--newCommunityTheme-line);
     }
-    #search-container svg:first-child{
+
+    #search-container svg:first-child {
         margin-top: 2px;
         height: 22px;
         width: 22px;
         color: var(--newCommunityTheme-bodyText);
     }
-    #search-container Input{
+
+    #search-container Input {
         display: none;
     }
 }
-@media only screen and (max-width:561px){
-    :not(header) .dropdown{
+
+@media only screen and (max-width:561px) {
+    #feedFilter > span:first-of-type{
+        gap: 0;
+        flex-wrap: wrap;
+    }
+    :not(header) .dropdown {
         position: fixed;
         top: 100%;
         transform: translateY(-100%);
         right: 0;
         width: 100%;
     }
-    header .dropdown{
+
+    header .dropdown {
         top: 0;
         transform: translateY(50px);
         margin: 0;
@@ -723,10 +734,12 @@ header>div>span:last-of-type>button>svg:first-child {
         opacity: 90%;
         backdrop-filter: blur(3px);
     }
-    header div:last-child > button:nth-child(5){
+
+    header div:last-child>button:nth-child(5) {
         display: none;
     }
 }
+
 @media only screen and (max-width: 994px) {
     #mainNav i:first-of-type {
         display: none;
@@ -819,35 +832,45 @@ input:checked+.slider:before {
     border-radius: 50%;
 }
 
-#createPost{
+#createPost {
     background-color: var(--newCommunityTheme-body);
 }
 
-#createPost .main{
+#createPost .main {
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
-#createPost .main span{
+#createPost .main span {
     display: flex;
     border: 1px solid transparent;
 }
 
-#createPost .main span button{
+#createPost .main span button {
     background-color: transparent;
     height: 45px;
     width: 45px;
     cursor: pointer;
 }
 
-#createPost .main svg{
+#createPost .main span button[title]::after{
+    top: 115%;
+}
+
+#createPost .main span button[title]::before{
+    top: 100%;
+    transform: rotate(180deg);
+}
+
+#createPost .main svg {
     fill: var(--newRedditTheme-actionIcon);
     height: 45px;
     width: 45px;
 }
 
-#createPost .main input[type="text"], #createPost .link input[type="text"]{
+#createPost .main input[type="text"],
+#createPost .link input[type="text"] {
     background-color: var(--newRedditTheme-field);
     border-radius: 4px;
     border: 1px solid var(--newRedditTheme-line);
@@ -858,14 +881,14 @@ input:checked+.slider:before {
     flex-grow: 1;
     height: 38px;
     outline: none;
-    padding: 0px 70px 0px 16px; 
+    padding: 0px 70px 0px 16px;
     overflow-x: hidden;
     overflow-wrap: break-word;
     width: 100%;
     margin: 10px;
 }
 
-#createPost .main input[type="text"]+div{
+#createPost .main input[type="text"]+div {
     position: absolute;
     top: 18px;
     right: 20px;
@@ -876,20 +899,21 @@ input:checked+.slider:before {
     color: var(--newCommunityTheme-actionIcon);
 }
 
-#createPost .upper{
+#createPost .upper {
     display: flex;
     align-items: end;
     flex-direction: column;
     height: 100px;
     width: 100%;
 }
-#createPost .upper > span:first-of-type{
+
+#createPost .upper>span:first-of-type {
     display: flex;
     flex-direction: row;
     width: 100%;
 }
 
-#createPost .upper > span:first-of-type button{
+#createPost .upper>span:first-of-type button {
     border: 1px solid var(--newRedditTheme-line);
     height: 50px;
     width: 100%;
@@ -897,7 +921,7 @@ input:checked+.slider:before {
     white-space: nowrap;
 }
 
-#createPost .upper > div{
+#createPost .upper>div {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -907,7 +931,7 @@ input:checked+.slider:before {
     font-weight: 600;
 }
 
-#createPost .upper > div > div > button{
+#createPost .upper>div>div>button {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -917,9 +941,9 @@ input:checked+.slider:before {
     border: 1px solid var(--newCommunityTheme-line);
     white-space: nowrap;
     padding: 10px;
-  }
+}
 
-  #createPost .upper div[role="menu"]{
+#createPost .upper div[role="menu"] {
     display: none;
     flex-direction: column;
     align-items: baseline;
@@ -941,7 +965,7 @@ input:checked+.slider:before {
     z-index: 1;
 }
 
-#createPost .upper div[role="menu"] div[role="heading"]{
+#createPost .upper div[role="menu"] div[role="heading"] {
     color: var(--newRedditTheme-actionIcon);
     font-size: 10px;
     font-weight: 500;
@@ -951,32 +975,32 @@ input:checked+.slider:before {
     padding: 10px 5px;
 }
 
-#createPost .upper div[role="menu"] div[role="heading"]:has(svg){
+#createPost .upper div[role="menu"] div[role="heading"]:has(svg) {
     text-indent: 15px;
 }
 
-#createPost .upper div[role="menu"] button{
+#createPost .upper div[role="menu"] button {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
     padding: 10px 15px;
-    background:none;
+    background: none;
 }
 
-#createPost .upper div[role="menu"] button svg{
+#createPost .upper div[role="menu"] button svg {
     height: 20px;
     width: 20px;
 }
 
-#createPost .upper > div > span{
+#createPost .upper>div>span {
     display: flex;
     gap: 10px;
     white-space: nowrap;
 }
 
-#createPost .upper > div > span > button{
-    text-transform:uppercase;
+#createPost .upper>div>span>button {
+    text-transform: uppercase;
     font-size: 0.8rem;
     background: none;
     color: var(--newCommunityTheme-button);
@@ -984,7 +1008,7 @@ input:checked+.slider:before {
     width: min-content;
 }
 
-#createPost .upper > div button i{
+#createPost .upper>div button i {
     margin: 5px;
     padding: 0.2rem;
     background-color: grey;
@@ -992,22 +1016,23 @@ input:checked+.slider:before {
     border-radius: 0.2rem;
 }
 
-#createPost .upper .activeTab{
+#createPost .upper .activeTab {
     border-bottom: 3px solid var(--newCommunityTheme-button) !important;
 }
 
-#createPost .upper .activeTab svg{
+#createPost .upper .activeTab svg {
     fill: var(--newCommunityTheme-button);
 }
 
-#createPost .lower, .post{
+#createPost .lower,
+.post {
     display: flex;
     flex-direction: column;
     width: 100%;
     gap: 10px;
 }
 
-#createPost .lower > span button{
+#createPost .lower>span button {
     margin-bottom: 8px;
     margin-right: 4px;
     padding: 4px 16px;
@@ -1017,15 +1042,15 @@ input:checked+.slider:before {
     border-radius: 9999px;
 }
 
-#createPost .lower > span:nth-child(2){
+#createPost .lower>span:nth-child(2) {
     display: flex;
     justify-content: end;
     width: 100%;
     border-top: 1px solid var(--newRedditTheme-line);
-    
+
 }
 
-#createPost .lower > div{
+#createPost .lower>div {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -1034,16 +1059,16 @@ input:checked+.slider:before {
     border-top: 1px solid var(--newCommunityTheme-line);
 }
 
-#createPost .lower > div a{
+#createPost .lower>div a {
     color: var(--newCommunityTheme-button);
     cursor: pointer;
 }
 
-#createPost input[type="checkbox"]{
-    margin:0px 5px 0px 0px;
+#createPost input[type="checkbox"] {
+    margin: 0px 5px 0px 0px;
 }
 
-.imageVideo{
+.imageVideo {
     width: 100%;
 }
 
@@ -1052,13 +1077,13 @@ input:checked+.slider:before {
     width: 100%;
     text-align: center;
     position: relative;
-  }
-  
-  .imageVideo #input-file-upload {
+}
+
+.imageVideo #input-file-upload {
     display: none;
-  }
-  
-  .imageVideo #label-file-upload {
+}
+
+.imageVideo #label-file-upload {
     height: 100%;
     display: flex;
     align-items: center;
@@ -1071,9 +1096,9 @@ input:checked+.slider:before {
     color: var(--newCommunityTheme-button);
     outline: 12px solid var(--newCommunityTheme-body);
     outline-offset: -10px;
-  }
-  
-  .imageVideo .upload-button {
+}
+
+.imageVideo .upload-button {
     cursor: pointer;
     padding: 0.6rem 1rem;
     border-radius: 1.2rem;
@@ -1081,13 +1106,13 @@ input:checked+.slider:before {
     color: var(--newCommunityTheme-button);
     font-weight: 600;
     margin: 10px;
-  }
-  
-  .imageVideo .upload-button:hover {
+}
+
+.imageVideo .upload-button:hover {
     opacity: 0.6;
-  }
-  
-  .imageVideo #drag-file-element {
+}
+
+.imageVideo #drag-file-element {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -1096,16 +1121,16 @@ input:checked+.slider:before {
     right: 0px;
     bottom: 0px;
     left: 0px;
-  }
+}
 
-  .link{
+.link {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
-  }
+}
 
-  .poll{
+.poll {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1113,56 +1138,63 @@ input:checked+.slider:before {
     width: 100%;
     gap: 10px;
     margin: 10px;
-  }
+}
 
-  .poll .textEditor{
+.poll .textEditor {
     width: 100%;
-  }
+}
 
-  .poll > div:last-of-type{
+.poll>div:last-of-type {
     display: flex;
     justify-content: space-between;
     width: 100%;
     gap: 30px;
-  }
+}
 
-  .poll > div > span{
+.poll>div>span {
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-direction: column;
     gap: 10px;
-  }
+}
 
-  .poll span{
+.poll span {
     width: 100%;
-  }
+}
 
-  .poll > div > span input{
+.poll>div>span input {
     border: 1px solid var(--newCommunityTheme-line);
     border-radius: 0.2rem;
     height: 35px;
     margin-bottom: 10px;
-  }
-
-  .poll > div > span > span > span{
-    display: flex;
-    align-items: center;
-  }
-
-  .poll > div input[type="text"]{
-    width: 100%;
-  }
-
-  #feedFilter {
-    position: relative;
-    padding: 15px;
 }
 
-#feedFilter>span {
+.poll>div>span>span>span {
+    display: flex;
+    align-items: center;
+}
+
+.poll>div input[type="text"] {
+    width: 100%;
+}
+
+#feedFilter {
+    position: relative;
+    padding: 5px;
+    background-color: var(--newCommunityTheme-body);
     display: flex;
     width: 100%;
-    gap: 10px;
+    justify-content: space-between;
+}
+
+#feedFilter .dropdown{
+    max-height: 200px;
+}
+
+#feedFilter > span:first-of-type {
+    display: flex;
+    width: 100%;
 }
 
 #feedFilter button {
@@ -1171,70 +1203,39 @@ input:checked+.slider:before {
     justify-content: center;
     background: none;
     width: min-content;
-    gap: 5px;
     font-weight: 600;
     color: var(--newCommunityTheme-actionIcon);
     fill: var(--newCommunityTheme-actionIcon);
     padding: 5px 10px;
     border-radius: 1.2rem;
+    margin: 5px;
+    height: 40px;
 }
+
+#feedFilter span span:has(.dropdown) > button{
+    width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: unset;
+    background-color: var(--newCommunityTheme-field);
+    padding: 0px 20px 0px 10px;
+}
+
+#feedFilter span span:has(.dropdown) > button svg{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    right: 0;
+}
+
+#feedFilter span span:has(.dropdown) > button > *{
+    position: relative;
+    top: 5px;
+    margin: 0px;
+}
+
 
 #feedFilter button:hover {
     background: var(--newCommunityTheme-line);
-}
-
-#feedFilter button svg {
-    height: 20px;
-    width: 20px;
-}
-
-#feedFilter > span:last-child{
-    width: min-content;
-}
-
-#feedFilter div[role="menu"]{
-    display: none;
-    flex-direction: column;
-    align-items: baseline;
-    justify-content: baseline;
-    background-color: var(--newRedditTheme-body);
-    border: 1px solid var(--newRedditTheme-line);
-    border-radius: 4px;
-    box-sizing: border-box;
-    color: var(--newRedditTheme-bodyText);
-    margin-top: -1px;
-    overflow-x: hidden;
-    overflow-y: auto;
-    position: absolute;
-    width: min-content;
-    height: min-content;
-    min-height: 100px;
-    max-height: 25vh;
-    top: 50px;
-    white-space: nowrap;
-    box-shadow: 2px 5px 10px -8px var(--newCommunityTheme-bodyTextAlpha20);
-}
-
-#feedFilter > span > span{
-    display: flex;
-    justify-content: end;
-    gap: 10px;
-}
-
-#feedFilter > span > span > button+button{
-    fill: var(--newCommunityTheme-button);
-    color: var(--newCommunityTheme-button);
-    background-color: var(--newCommunityTheme-field);
-}
-
-#feedFilter div[role="menu"] button{
-    justify-content: start;
-    border-radius: 0;
-    padding: 5px;
-    width: 100%;
-}
-
-#feedFilter div[role="menu"] svg{
-    height: 20px;
-    width: 20px;
 }

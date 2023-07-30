@@ -28,6 +28,7 @@ i {
 }
 
 button{
+    white-space: nowrap;
     cursor: pointer;
 }
 
