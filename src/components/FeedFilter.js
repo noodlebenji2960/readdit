@@ -1,50 +1,63 @@
-import React, { useState} from "react";
+import React, { useEffect, useState } from "react";
 
+import Dropdown from "./Dropdown"
 import Icon from "./Icon";
 
+import { getIP } from "../hooks/getIP";
 
-const FeedFilter = () => {
+
+const FeedFilter = (props) => {
     const [activeButton, setActiveButton] = useState()
     const [topRange, setTopRange] = useState("Today")
+    const [location, setLocation] = useState()
+    const [hot, setHot] = useState("Everywhere")
     const [view, setView] = useState("Card")
 
+    const ranges = [
+        "Now",
+        "Today",
+        "This Week",
+        "This Month",
+        "this Year"
+    ]
+
     const countries = [
-        "Everwhere",
-        "United States",
-        "Argentina",
-        "Australia",
-        "Bulgaria",
-        "Canada",
-        "Chile",
-        "Columbia",
-        "Croatia",
-        "Czech Republic",
-        "Finland",
-        "France",
-        "Germany",
-        "Greece",
-        "Hungary",
-        "Iceland",
-        "India",
-        "Ireland",
-        "Italy",
-        "Japan",
-        "Malaysia",
-        "Mexico",
-        "New Zealand",
-        "Philippines",
-        "Poland",
-        "Portugal",
-        "Puerto Rico",
-        "Romania",
-        "Serbia",
-        "Singapore",
-        "Spain",
-        "Sweden",
-        "Taiwan",
-        "Thailand",
-        "Turkey",
-        "United Kingdom",
+        ["Everywhere",       "GLOBAL"],
+        ["United States",   "US"],
+        ["Argentina",       "AR"],
+        ["Australia",       "AU"],
+        ["Bulgaria",        "BG"],
+        ["Canada",          "CA"],
+        ["Chile",           "CL"],
+        ["Columbia",        "CO"],
+        ["Croatia",         "HR"],
+        ["Czech Republic",  "CZ"],
+        ["Finland",         "FI"],
+        ["France",          "FR"],
+        ["Germany",         "DE"],
+        ["Greece",          "GR"],
+        ["Hungary",         "HU"],
+        ["Iceland",         "IS"],
+        ["India",           "IN"],
+        ["Ireland",         "IE"],
+        ["Italy",           "IT"],
+        ["Japan",           "JP"],
+        ["Malaysia",        "MY"],
+        ["Mexico",          "MX"],
+        ["New Zealand",     "NZ"],
+        ["Philippines",     "PH"],
+        ["Poland",          "PL"],
+        ["Portugal",        "PT"],
+        ["Puerto Rico",     "PR"],
+        ["Romania",         "RO"],
+        ["Serbia",          "RS"],
+        ["Singapore",       "SG"],
+        ["Spain",           "ES"],
+        ["Sweden",          "SE"],
+        ["Taiwan",          "TW"],
+        ["Thailand",        "TH"],
+        ["Turkey",          "TR"],
+        ["United Kingdom",  "UK"],
     ]
 
     const style = {
@@ -53,125 +66,123 @@ const FeedFilter = () => {
         backgroundColor: "var(--newCommunityTheme-field)"
     }
 
+    useEffect(() => {
+        setLocation(getIP().then((data) => setHot(data.country)))
+    }, [])
+
+    useEffect(() => {
+
+    })
+
     return (
         <div id="feedFilter" className="feedItem">
             <span>
                 <button
-                    onClick={() => setActiveButton("Best")}
+                    onClick={() => {
+                        setActiveButton("Best")
+                    }}
                     style={activeButton == "Best" ? style : {}}>
                     <Icon iconName="IoRocketOutline" />
                     Best
                 </button>
-                <span>
-                    <button
-                        onClick={(e) => setActiveButton("Hot")}
-                        style={activeButton == "Hot" ? style : {}}>
-                        <Icon iconName="BsFire" />
-                        Hot
-                    </button>
-                    {activeButton=="Hot" &&
-                        <button onMouseDown={(e)=>toggleMenu(e, countriesRef)}>
-                            Everywhere
-                            <Icon iconName="FiChevronDown"/>
-                        </button>
-                    }
-                    <div role="menu">
-                        {countries.map((e)=>{
+                <button
+                    onClick={() => {
+                        setActiveButton("Hot")
+                    }}
+                    style={activeButton == "Hot" ? style : {}}>
+                    <Icon iconName="BsFire" />
+                    Hot
+                </button>
+                {activeButton == "Hot" &&
+                    <Dropdown
+                        scrollToIndex={countries.findIndex((e) => e[0] == hot)}
+                        label={
+                            <>
+                                {hot}
+                                <Icon iconName="FiChevronDown" />
+                            </>
+                        }>
+                        {countries.map((ele) => {
                             return (
-                                <button key={e}>
-                                    {e}
+                                <button
+                                    key={ele[0]}
+                                    onClick={(event) => {
+                                        props.fetchPopular(ele[1])
+                                        setHot(ele[0])
+                                    }}
+                                    style={hot == ele[0]? style : {}}>
+                                    {ele[0]}
                                 </button>
                             )
                         })}
-                    </div>
-                </span>
+                    </Dropdown>
+                }
                 <button
                     onClick={() => setActiveButton("New")}
                     style={activeButton == "New" ? style : {}}>
                     <Icon iconName="TiStarburstOutline" />
                     New
                 </button>
-                <span>
-                    <button
-                        onClick={(e) => setActiveButton("Top")}
-                        style={activeButton == "Top" ? style : {}}>
-                        <Icon iconName="MdBarChart" />
-                        Top
-                    </button>
-                    {activeButton=="Top" &&
-                        <button>
-                            Today
-                            <Icon iconName="FiChevronDown"/>
-                        </button>
-                    }
-                    <div role="menu">
-                        <button
-                            onClick={()=>setTopRange("Now")}
-                            style={topRange == "Now" ? style : {}}>
-                            Now
-                        </button>
-                        <button
-                            onClick={()=>setTopRange("Today")}
-                            style={topRange == "Today" ? style : {}}>
-                            Today
-                        </button>
-                        <button
-                            onClick={()=>setTopRange("This Week")}
-                            style={topRange == "This Week" ? style : {}}>
-                            This Week
-                        </button>
-                        <button
-                            onClick={()=>setTopRange("This Month")}
-                            style={topRange == "This Month" ? style : {}}>
-                            This Month
-                        </button>
-                        <button
-                            onClick={()=>setTopRange("This Year")}
-                            style={topRange == "This Year" ? style : {}}>
-                            This Year
-                        </button>
-                        <button
-                            onClick={()=>setTopRange("All Time")}
-                            style={topRange == "All Time" ? style : {}}>
-                            All Time
-                        </button>
-                    </div>
-                </span>
+                <button
+                    onClick={(e) => setActiveButton("Top")}
+                    style={activeButton == "Top" ? style : {}}>
+                    <Icon iconName="MdBarChart" />
+                    Top
+                </button>
+                {activeButton == "Top" &&
+                    <Dropdown
+                        label={
+                            <>
+                                {topRange}
+                                <Icon iconName="FiChevronDown" />
+                            </>
+                        }>
+                        {ranges.map((range) => {
+                            return (
+                                <button
+                                    onClick={() => setTopRange(range)}
+                                    style={topRange == range ? style : {}}
+                                >
+                                    {range}
+                                </button>
+                            )
+                        })}
+                    </Dropdown>
+                }
                 <button
                     onClick={(e) => setActiveButton("Rising")}
                     style={activeButton == "Rising" ? style : {}}>
-                    <Icon iconName="AiOutlineRise"/>
+                    <Icon iconName="AiOutlineRise" />
                     Rising
                 </button>
             </span>
-            <span>
-                <button>
-                    {view=="Card" && <Icon iconName="RiLayoutRowLine"/>}
-                    {view=="Classic" && <Icon iconName="ClassicIcon" />}
-                    {view=="Compact" && <Icon iconName="CompactIcon" />}
+            <Dropdown menuPlacement={{ right: 0 }} label={
+                <>
+                    {view == "Card" && <Icon iconName="RiLayoutRowLine" />}
+                    {view == "Classic" && <Icon iconName="ClassicIcon" />}
+                    {view == "Compact" && <Icon iconName="CompactIcon" />}
                     <Icon iconName="FiChevronDown" />
+                </>
+            }>
+                <button
+                    onClick={() => setView("Card")}
+                    style={view == "Card" ? style : {}}>
+                    <Icon iconName="CardIcon" />
+                    Card
                 </button>
-                <div role="menu">
-                    <button 
-                        onClick={()=>setView("Card")}
-                        style={view == "Card" ? style : {}}>
-                        <Icon iconName="CardIcon"/>
-                        Card
-                    </button>
-                    <button 
-                        onClick={()=>setView("Classic")}
-                        style={view == "Classic" ? style : {}}>
-                        <Icon iconName="ClassicIcon"/>
-                        Classic
-                    </button>
-                    <button 
-                        onClick={()=>setView("Compact")}
-                        style={view == "Compact" ? style : {}}>
-                        <Icon iconName="CompactIcon"/>
-                        Compact
-                    </button>
-                </div>
-            </span>
+                <button
+                    onClick={() => setView("Classic")}
+                    style={view == "Classic" ? style : {}}>
+                    <Icon iconName="ClassicIcon" />
+                    Classic
+                </button>
+                <button
+                    onClick={() => setView("Compact")}
+                    style={view == "Compact" ? style : {}}>
+                    <Icon iconName="CompactIcon" />
+                    Compact
+                </button>
+            </Dropdown>
         </div>
     )
 }

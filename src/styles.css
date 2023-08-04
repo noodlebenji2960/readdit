@@ -25,7 +25,7 @@ button svg {
     font-size: smaller;
 }
 
-.commentInfo i{
+.commentInfo i {
     color: var(--newCommunityTheme-actionIcon);
 }
 
@@ -42,7 +42,7 @@ button svg {
     min-width: 20px;
 }
 
-.commentItem > span{
+.commentItem>span {
     grid-area: 1/2/2/3;
     min-width: 0;
 }
@@ -110,7 +110,7 @@ button svg {
     width: min-content;
 }
 
-.commentItemForm button{
+.commentItemForm button {
     height: 20px;
 }
 
@@ -121,7 +121,6 @@ button svg {
     outline: 1px solid var(--newCommunityTheme-line);
     outline-offset: -1px;
     border-radius: 3px;
-    padding-right: 3px;
     margin: 10px;
 }
 
@@ -161,7 +160,7 @@ button svg {
     padding: 4px 8px;
 }
 
-.textEditor>div span:last-child button:last-child{
+.textEditor>div span:last-child button:last-child {
     background-color: var(--newCommunityTheme-button);
     border: none;
     color: var(--newCommunityTheme-body);
@@ -219,7 +218,7 @@ span:has(.dropdown) {
     height: 100%;
 }
 
-header .dropdown{
+header .dropdown {
     transform: translateY(-7px);
     max-height: 80vh;
     min-width: 270px;
@@ -228,13 +227,14 @@ header .dropdown{
     border-radius: 0 0 4px 4px;
 }
 
-header span > span > .dropdown li:has(div button) div{
+header span>span>.dropdown li:has(div button) div {
     width: 100%;
 }
 
-header span > span > .dropdown li:has(div button) button:last-child{
+header span>span>.dropdown li:has(div button) button:last-child {
     width: min-content;
 }
+
 .dropdown {
     display: none;
     flex-direction: column;
@@ -256,38 +256,49 @@ header span > span > .dropdown li:has(div button) button:last-child{
     margin-top: 6px;
 }
 
+video{
+    width: 100%;
+}
+
 /* width */
-.dropdown::-webkit-scrollbar {
+.dropdown::-webkit-scrollbar, .overlay::-webkit-scrollbar  {
     width: 10px;
 }
-  
+
 /* Track */
-.dropdown::-webkit-scrollbar-track {
+.dropdown::-webkit-scrollbar-track, .overlay::-webkit-scrollbar-track {
     background: var(--newCommunityTheme-line);
     border-right: 5px solid var(--newCommunityTheme-body);
     border-bottom: 5px solid var(--newCommunityTheme-body);
 }
 
 /* Handle */
-.dropdown::-webkit-scrollbar-thumb{
+.dropdown::-webkit-scrollbar-thumb, .overlay::-webkit-scrollbar-thumb {
     background: var(--newCommunityTheme-actionIcon);
     border-right: 5px solid var(--newCommunityTheme-body);
 }
 
 /* Handle on hover */
-.dropdown::-webkit-scrollbar-thumb:hover {
-    background: var(--newCommunityTheme-line);
+.dropdown::-webkit-scrollbar-thumb:hover, .overlay::-webkit-scrollbar-thumb:hover {
+    background: var(--newCommunityTheme-bodyText);
 }
 
-.toggleFav{
+.dropdown::-webkit-scrollbar-thumb::after, .overlay::-webkit-scrollbar-thumb:after{
+    position: fixed;
+    content: "";
+    height: 20px;
+    width: 20px;
+}
+
+.toggleFav {
     color: var(--newRedditTheme-button) !important;
 }
 
-.dropdown button{
+.dropdown button {
     padding: 24px;
 }
 
-.dropdown div[role="heading"]{
+.dropdown div[role="heading"] {
     gap: 10px;
     fill: var(--newCommunityTheme-actionIcon);
     color: var(--newCommunityTheme-actionIcon);
@@ -299,11 +310,11 @@ header span > span > .dropdown li:has(div button) button:last-child{
     border-top: 2px solid var(--newCommunityTheme-bodyTextAlpha20);
 }
 
-header > span .dropdown li > div button:last-of-type{
+header>span .dropdown li>div button:last-of-type {
     color: var(--newCommunityTheme-button);
 }
 
-header > span .dropdown li div[role="heading"]{
+header>span .dropdown li div[role="heading"] {
     text-transform: uppercase;
     border: none !important;
     font-size: 0.6rem;
@@ -322,7 +333,7 @@ header > span .dropdown li div[role="heading"]{
     justify-content: space-between;
 }
 
-span:has(.dropdown) > button > *{
+span:has(.dropdown)>button>* {
     pointer-events: none;
 }
 
@@ -367,6 +378,10 @@ button[title] {
     position: relative;
 }
 
+button[title]::before, button[title]::after{
+    z-index: 999;
+}
+
 button[title]:hover::after {
     position: absolute;
     content: attr(title);
@@ -380,7 +395,6 @@ button[title]:hover::after {
     border-radius: 5px;
     min-width: 15px;
     min-height: 15px;
-    z-index: 10;
 }
 
 button[title]:hover::before {
@@ -394,35 +408,81 @@ button[title]:hover::before {
     border-top: 10px solid rgb(0, 0, 0);
 }
 
-#postOverlay {
-    display: grid;
-    grid-template-rows: 1fr;
-    grid-template-columns: 50px 1fr;
-    z-index: 99;
-    background: var(--newCommunityTheme-body);
-    color: var(--newCommunityTheme-bodyText);
+.feed{
+    background-color: var(--newRedditTheme-bg);
+    padding: 1px 24px 0 24px;
+
 }
 
-#postOverlay:hover {
+.feed > *{
+    margin: auto;
+    margin-top: 20px;
+    border-radius: 5px;
+    outline: 1px solid var(--newCommunityTheme-line);
+    max-width: 840px;
+}
+
+.feed > *:hover{
+    outline: 1px solid var(--newCommunityTheme-actionIcon);
+}
+
+.overlayWrapper{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.overlay{
+    position: fixed;
+    height: 95vh;
+    margin-top: 50px;
+    max-width: 85vw;
+    left: 50%;
+    top: 0;
+    overflow-y: scroll;
+    transform: translateX(-50%);
+    z-index: 99;
+    border-radius: 0;
+    outline: none !important;
+    border: none !important;
+}
+
+.post {
+    display: grid !important;
+    grid-template-rows: 1fr !important;
+    grid-template-columns: 50px 1fr !important;
+    background: var(--newCommunityTheme-body);
+    color: var(--newCommunityTheme-bodyText);
+    font-size: 13px;
+}
+
+.post:hover {
     border-color: var(--newRedditTheme-actionItem);
 }
 
-#postOverlay>div:first-of-type {
+.post>div:first-of-type {
     grid-area: 1/ 1 / 2 / 2;
     display: flex;
     align-items: center;
     flex-direction: column;
-    background:  var(--newCommunityTheme-postTransparent20);
+    background: var(--newCommunityTheme-postTransparent20);
     color: var(--newCommunityTheme-actionIcon);
     font-size: 0.8rem;
 }
 
-#postOverlay>div:first-of-type svg {
+.post > div > div{
+    white-space: pre-wrap;
+}
+
+.post>div:first-of-type svg {
     height: 25px;
     width: 25px;
 }
 
-#postOverlay>div:last-of-type {
+.post>div:last-of-type {
     grid-area: 1 / 2 / 2 / 3;
     display: flex;
     flex-direction: column;
@@ -431,14 +491,14 @@ button[title]:hover::before {
     padding: 10px;
 }
 
-#postOverlay>div:last-of-type>div:first-of-type {
+.post>div:last-of-type>div:first-of-type {
     display: flex;
     width: 100%;
     gap: 10px;
     justify-content: space-between;
 }
 
-#postOverlay>div:last-of-type>div:first-of-type button {
+.post>div:last-of-type>div:first-of-type button {
     padding: 5px 10px;
     border-radius: 9999px;
     background-color: var(--newCommunityTheme-field);
@@ -446,7 +506,7 @@ button[title]:hover::before {
     fill: var(--newRedditTheme-button);
 }
 
-#postOverlay>div:last-of-type>div:first-of-type>span {
+.post>div:last-of-type>div:first-of-type>span {
     display: flex;
     align-items: center;
     font-size: 12px;
@@ -455,7 +515,7 @@ button[title]:hover::before {
     gap: 10px;
 }
 
-#postOverlay>div:last-of-type>div:first-of-type i {
+.post>div:last-of-type>div:first-of-type i {
     font-style: normal;
     font-size: 12px;
     font-weight: 400;
@@ -463,12 +523,12 @@ button[title]:hover::before {
     color: #787C7E;
 }
 
-#postOverlay>div:last-of-type>div:first-of-type svg {
+.post>div:last-of-type>div:first-of-type svg {
     height: 20px;
     width: 20px;
 }
 
-#postOverlay>div:last-of-type>a {
+.post>div:last-of-type>a {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -476,19 +536,19 @@ button[title]:hover::before {
     color: black;
 }
 
-#postOverlay>div:last-of-type>a>div:last-of-type {
+.post>div:last-of-type>a>div:last-of-type {
     display: flex;
     justify-content: center;
 }
 
-#postOverlay>div:last-of-type>div:nth-child(3) {
+.post>div:last-of-type>div:nth-child(3) {
     display: flex;
     align-items: center;
     height: 25px;
     gap: 10px;
 }
 
-#postOverlay>div:last-of-type>div:nth-child(3) button {
+.post>div:last-of-type>div:nth-child(3) button {
     display: flex;
     align-items: center;
     height: 100%;
@@ -500,17 +560,18 @@ button[title]:hover::before {
     color: var(--newCommunityTheme-actionIcon);
 }
 
-#postOverlay>div:last-of-type>div:nth-child(3) button:hover{
+.post>div:last-of-type>div:nth-child(3) button:hover {
     background-color: var(--newCommunityTheme-line);
 }
 
-#postOverlay>div:last-of-type>div:nth-child(3) button svg {
+.post>div:last-of-type>div:nth-child(3) button svg {
     height: 20px;
     width: 20px;
 }
 
-#postOverlay h1 {
+.post h1 {
     font-size: 1.2rem;
+    margin-bottom: 10px;
 }
 
 header {
@@ -537,11 +598,11 @@ header div {
     height: 100%;
 }
 
-header>div{
+header>div {
     gap: 20px;
 }
 
-header > button:hover{
+header>button:hover {
     background: none !important;
 }
 
@@ -567,23 +628,23 @@ header>button {
     margin: 5px;
 }
 
-header span:has(.dropdown) > button{
+header span:has(.dropdown)>button {
     padding: 0 20px;
 }
 
-header span:has(.dropdownExpanded){
+header span:has(.dropdownExpanded) {
     margin: 6px 0px 0px 0px;
-    padding:7px 0px 0px 0px;
+    padding: 7px 0px 0px 0px;
     border-radius: 10px 10px 0px 0px !important;
     outline: 1px solid var(--newCommunityTheme-line);
     outline-offset: -7px;
 }
 
-header span:has(.dropdownExpanded) > button > *{
+header span:has(.dropdownExpanded)>button>* {
     transform: translateY(-6px);
 }
 
-header span:has(.dropdown):hover{
+header span:has(.dropdown):hover {
     border-radius: 13px;
     outline: 1px solid var(--newCommunityTheme-line);
     outline-offset: -7px;
@@ -597,6 +658,10 @@ header span:has(.dropdown):hover{
     justify-content: space-between;
     width: 100%;
     margin: 10px;
+}
+
+#header-search-bar:hover{
+    outline: var(--newCommunityTheme-button) 1px solid;
 }
 
 #search-container form {
@@ -677,56 +742,90 @@ header>div>span:last-of-type>button>svg:first-child {
 .user>i {
     font-weight: bold;
 }
+
 @media only screen and (max-width: 320px) {
-    #search-container{
+    #search-container {
         display: none;
     }
 }
 
 @media only screen and (max-width: 611px) {
-
-    header div:last-child > button:nth-child(1){
+    .post{
+        grid-template-columns: 0 1fr !important;
+    }
+    .post > div:first-child{
         display: none;
     }
-    #search-container{
+    .carousel > span{
+        top: 16% !important;
+        width: 98% !important;
+    }
+    .feed{
+        padding: 0;
+    }
+    header div:last-child>button:nth-child(1) {
+        display: none;
+    }
+
+    #search-container {
         width: 25px;
         margin: 0;
     }
-    #search-container:hover{
+
+    #search-container:hover {
         cursor: pointer;
         background-color: var(--newCommunityTheme-line);
     }
-    #search-container svg:first-child{
+
+    #search-container svg:first-child {
         margin-top: 2px;
         height: 22px;
         width: 22px;
         color: var(--newCommunityTheme-bodyText);
     }
-    #search-container Input{
+
+    #search-container Input {
         display: none;
     }
 }
-@media only screen and (max-width:561px){
-    :not(header) .dropdown{
+
+@media only screen and (max-width:561px) {
+    #feedFilter button{
+        font-size: 0.8rem;
+    }
+    #feedFilter > span:first-of-type{
+        gap: 0;
+        flex-wrap: wrap;
+    }
+    :not(header) .dropdown {
         position: fixed;
-        top: 100%;
-        transform: translateY(-100%);
+        top: 0;
         right: 0;
         width: 100%;
     }
-    header .dropdown{
-        top: 0;
+
+    header .dropdown {
+        top: -1px;
         transform: translateY(50px);
         margin: 0;
-        max-height: 90vh;
-        outline: 3px solid var(--newCommunityTheme-line);
-        opacity: 90%;
-        backdrop-filter: blur(3px);
+        min-height: 100vh;
     }
-    header div:last-child > button:nth-child(5){
+
+    header div:last-child>button:nth-child(5) {
         display: none;
     }
 }
+
+@media only screen and (max-width:750px){
+    :has(.overlay) header{
+        border: none !important;
+        outline: none !important;
+    }
+    .overlay{
+        max-width: 100vw !important;
+    }
+}
+
 @media only screen and (max-width: 994px) {
     #mainNav i:first-of-type {
         display: none;
@@ -819,38 +918,57 @@ input:checked+.slider:before {
     border-radius: 50%;
 }
 
-#createPost{
+#createPost {
     background-color: var(--newCommunityTheme-body);
 }
 
-#createPost .main{
+#createPost .main {
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
-#createPost .main span{
+#createPost .main span {
     display: flex;
     border: 1px solid transparent;
 }
 
-#createPost .main span button{
+#createPost .main span button {
     background-color: transparent;
     height: 45px;
     width: 45px;
     cursor: pointer;
 }
 
-#createPost .main svg{
+#createPost .main span button[title]::after{
+    top: 115%;
+}
+
+#createPost .main span button[title]::before{
+    top: 100%;
+    transform: rotate(180deg);
+}
+
+header button[title]::after{
+    top: 115% !important;
+}
+
+header button[title]::before{
+    top: 100% !important;
+    transform: rotate(180deg) !important;
+}
+
+#createPost .main svg {
     fill: var(--newRedditTheme-actionIcon);
     height: 45px;
     width: 45px;
 }
 
-#createPost .main input[type="text"], #createPost .link input[type="text"]{
-    background-color: var(--newRedditTheme-field);
+#createPost .main input[type="text"],
+#createPost .link input[type="text"] {
+    background-color: var(--newRedditTheme-body);
     border-radius: 4px;
-    border: 1px solid var(--newRedditTheme-line);
+    border: 1px solid var(--newCommunityTheme-line);
     box-shadow: none;
     box-sizing: border-box;
     color: var(--newRedditTheme-bodyText);
@@ -858,14 +976,18 @@ input:checked+.slider:before {
     flex-grow: 1;
     height: 38px;
     outline: none;
-    padding: 0px 70px 0px 16px; 
+    padding: 0px 70px 0px 16px;
     overflow-x: hidden;
     overflow-wrap: break-word;
     width: 100%;
     margin: 10px;
 }
 
-#createPost .main input[type="text"]+div{
+#createPost .main input[type="text"]:hover{
+    outline: 1px solid var(--newCommunityTheme-button);
+}
+
+#createPost .main input[type="text"]+div {
     position: absolute;
     top: 18px;
     right: 20px;
@@ -876,20 +998,21 @@ input:checked+.slider:before {
     color: var(--newCommunityTheme-actionIcon);
 }
 
-#createPost .upper{
+#createPost .upper {
     display: flex;
     align-items: end;
     flex-direction: column;
     height: 100px;
     width: 100%;
 }
-#createPost .upper > span:first-of-type{
+
+#createPost .upper>span:first-of-type {
     display: flex;
     flex-direction: row;
     width: 100%;
 }
 
-#createPost .upper > span:first-of-type button{
+#createPost .upper>span:first-of-type button {
     border: 1px solid var(--newRedditTheme-line);
     height: 50px;
     width: 100%;
@@ -897,7 +1020,7 @@ input:checked+.slider:before {
     white-space: nowrap;
 }
 
-#createPost .upper > div{
+#createPost .upper>div {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -907,7 +1030,7 @@ input:checked+.slider:before {
     font-weight: 600;
 }
 
-#createPost .upper > div > div > button{
+#createPost .upper>div>div>button {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -917,9 +1040,9 @@ input:checked+.slider:before {
     border: 1px solid var(--newCommunityTheme-line);
     white-space: nowrap;
     padding: 10px;
-  }
+}
 
-  #createPost .upper div[role="menu"]{
+#createPost .upper div[role="menu"] {
     display: none;
     flex-direction: column;
     align-items: baseline;
@@ -941,7 +1064,7 @@ input:checked+.slider:before {
     z-index: 1;
 }
 
-#createPost .upper div[role="menu"] div[role="heading"]{
+#createPost .upper div[role="menu"] div[role="heading"] {
     color: var(--newRedditTheme-actionIcon);
     font-size: 10px;
     font-weight: 500;
@@ -951,32 +1074,32 @@ input:checked+.slider:before {
     padding: 10px 5px;
 }
 
-#createPost .upper div[role="menu"] div[role="heading"]:has(svg){
+#createPost .upper div[role="menu"] div[role="heading"]:has(svg) {
     text-indent: 15px;
 }
 
-#createPost .upper div[role="menu"] button{
+#createPost .upper div[role="menu"] button {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
     padding: 10px 15px;
-    background:none;
+    background: none;
 }
 
-#createPost .upper div[role="menu"] button svg{
+#createPost .upper div[role="menu"] button svg {
     height: 20px;
     width: 20px;
 }
 
-#createPost .upper > div > span{
+#createPost .upper>div>span {
     display: flex;
     gap: 10px;
     white-space: nowrap;
 }
 
-#createPost .upper > div > span > button{
-    text-transform:uppercase;
+#createPost .upper>div>span>button {
+    text-transform: uppercase;
     font-size: 0.8rem;
     background: none;
     color: var(--newCommunityTheme-button);
@@ -984,7 +1107,7 @@ input:checked+.slider:before {
     width: min-content;
 }
 
-#createPost .upper > div button i{
+#createPost .upper>div button i {
     margin: 5px;
     padding: 0.2rem;
     background-color: grey;
@@ -992,22 +1115,23 @@ input:checked+.slider:before {
     border-radius: 0.2rem;
 }
 
-#createPost .upper .activeTab{
+#createPost .upper .activeTab {
     border-bottom: 3px solid var(--newCommunityTheme-button) !important;
 }
 
-#createPost .upper .activeTab svg{
+#createPost .upper .activeTab svg {
     fill: var(--newCommunityTheme-button);
 }
 
-#createPost .lower, .post{
+#createPost .lower,
+.post {
     display: flex;
     flex-direction: column;
     width: 100%;
     gap: 10px;
 }
 
-#createPost .lower > span button{
+#createPost .lower>span button {
     margin-bottom: 8px;
     margin-right: 4px;
     padding: 4px 16px;
@@ -1017,15 +1141,15 @@ input:checked+.slider:before {
     border-radius: 9999px;
 }
 
-#createPost .lower > span:nth-child(2){
+#createPost .lower>span:nth-child(2) {
     display: flex;
     justify-content: end;
     width: 100%;
     border-top: 1px solid var(--newRedditTheme-line);
-    
+
 }
 
-#createPost .lower > div{
+#createPost .lower>div {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -1034,16 +1158,16 @@ input:checked+.slider:before {
     border-top: 1px solid var(--newCommunityTheme-line);
 }
 
-#createPost .lower > div a{
+#createPost .lower>div a {
     color: var(--newCommunityTheme-button);
     cursor: pointer;
 }
 
-#createPost input[type="checkbox"]{
-    margin:0px 5px 0px 0px;
+#createPost input[type="checkbox"] {
+    margin: 0px 5px 0px 0px;
 }
 
-.imageVideo{
+.imageVideo {
     width: 100%;
 }
 
@@ -1052,13 +1176,13 @@ input:checked+.slider:before {
     width: 100%;
     text-align: center;
     position: relative;
-  }
-  
-  .imageVideo #input-file-upload {
+}
+
+.imageVideo #input-file-upload {
     display: none;
-  }
-  
-  .imageVideo #label-file-upload {
+}
+
+.imageVideo #label-file-upload {
     height: 100%;
     display: flex;
     align-items: center;
@@ -1071,9 +1195,9 @@ input:checked+.slider:before {
     color: var(--newCommunityTheme-button);
     outline: 12px solid var(--newCommunityTheme-body);
     outline-offset: -10px;
-  }
-  
-  .imageVideo .upload-button {
+}
+
+.imageVideo .upload-button {
     cursor: pointer;
     padding: 0.6rem 1rem;
     border-radius: 1.2rem;
@@ -1081,13 +1205,13 @@ input:checked+.slider:before {
     color: var(--newCommunityTheme-button);
     font-weight: 600;
     margin: 10px;
-  }
-  
-  .imageVideo .upload-button:hover {
+}
+
+.imageVideo .upload-button:hover {
     opacity: 0.6;
-  }
-  
-  .imageVideo #drag-file-element {
+}
+
+.imageVideo #drag-file-element {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -1096,16 +1220,16 @@ input:checked+.slider:before {
     right: 0px;
     bottom: 0px;
     left: 0px;
-  }
+}
 
-  .link{
+.link {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
-  }
+}
 
-  .poll{
+.poll {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1113,56 +1237,63 @@ input:checked+.slider:before {
     width: 100%;
     gap: 10px;
     margin: 10px;
-  }
+}
 
-  .poll .textEditor{
+.poll .textEditor {
     width: 100%;
-  }
+}
 
-  .poll > div:last-of-type{
+.poll>div:last-of-type {
     display: flex;
     justify-content: space-between;
     width: 100%;
     gap: 30px;
-  }
+}
 
-  .poll > div > span{
+.poll>div>span {
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-direction: column;
     gap: 10px;
-  }
+}
 
-  .poll span{
+.poll span {
     width: 100%;
-  }
+}
 
-  .poll > div > span input{
+.poll>div>span input {
     border: 1px solid var(--newCommunityTheme-line);
     border-radius: 0.2rem;
     height: 35px;
     margin-bottom: 10px;
-  }
-
-  .poll > div > span > span > span{
-    display: flex;
-    align-items: center;
-  }
-
-  .poll > div input[type="text"]{
-    width: 100%;
-  }
-
-  #feedFilter {
-    position: relative;
-    padding: 15px;
 }
 
-#feedFilter>span {
+.poll>div>span>span>span {
+    display: flex;
+    align-items: center;
+}
+
+.poll>div input[type="text"] {
+    width: 100%;
+}
+
+#feedFilter {
+    position: relative;
+    padding: 5px;
+    background-color: var(--newCommunityTheme-body);
     display: flex;
     width: 100%;
-    gap: 10px;
+    justify-content: space-between;
+}
+
+#feedFilter .dropdown{
+    max-height: 200px;
+}
+
+#feedFilter > span:first-of-type {
+    display: flex;
+    width: 100%;
 }
 
 #feedFilter button {
@@ -1171,70 +1302,166 @@ input:checked+.slider:before {
     justify-content: center;
     background: none;
     width: min-content;
-    gap: 5px;
     font-weight: 600;
     color: var(--newCommunityTheme-actionIcon);
     fill: var(--newCommunityTheme-actionIcon);
     padding: 5px 10px;
     border-radius: 1.2rem;
+    margin: 5px;
+    height: 40px;
 }
+
+#feedFilter span span:has(.dropdown) > button{
+    width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: unset;
+    background-color: var(--newCommunityTheme-field);
+    padding: 0px 20px 0px 10px;
+}
+
+#feedFilter span span:has(.dropdown) > button svg{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    right: 0;
+}
+
+#feedFilter span span:has(.dropdown) > button > *{
+    position: relative;
+    top: 5px;
+    margin: 0px;
+}
+
 
 #feedFilter button:hover {
     background: var(--newCommunityTheme-line);
 }
 
-#feedFilter button svg {
-    height: 20px;
-    width: 20px;
+.carousel{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    outline: none !important;
+    scroll-behavior: smooth;
+    border-radius: 15px;
+    margin-top: 20px;
+    padding: 1px;
+    -webkit-mask-image: linear-gradient(70deg, rgb(0,0,0,0.5) ,rgb(0,0,0) 25%, rgb(0, 0, 0) 75%, rgb(0,0,0,0.5));
+    mask-image: linear-gradient(70deg, rgb(0,0,0,0.5) ,rgb(0,0,0) 25%, rgb(0, 0, 0) 75%, rgb(0,0,0,0.5));
 }
 
-#feedFilter > span:last-child{
-    width: min-content;
-}
-
-#feedFilter div[role="menu"]{
-    display: none;
-    flex-direction: column;
-    align-items: baseline;
-    justify-content: baseline;
-    background-color: var(--newRedditTheme-body);
-    border: 1px solid var(--newRedditTheme-line);
-    border-radius: 4px;
-    box-sizing: border-box;
-    color: var(--newRedditTheme-bodyText);
-    margin-top: -1px;
-    overflow-x: hidden;
-    overflow-y: auto;
+.carousel img{
     position: absolute;
-    width: min-content;
-    height: min-content;
-    min-height: 100px;
-    max-height: 25vh;
-    top: 50px;
-    white-space: nowrap;
-    box-shadow: 2px 5px 10px -8px var(--newCommunityTheme-bodyTextAlpha20);
+    left: -5%;
+    top: -5%;
+    width: 105% !important;
+    height: 105% !important;
+    z-index: 1;
+    border-radius: 15px;
 }
+.carousel li::before {
+    content:""; 
+    position: absolute; 
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(rgba(255, 255, 255, 0.569), #ffffff00 5%, #000000);
+    display: flex;
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+    backdrop-filter: blur(0);
+    border-radius: 15px;
+    outline: 1px solid var(--newCommunityTheme-line);
+    outline-offset: -1px;
+    transition: all 0.3s ease-in-out;
+  }
 
-#feedFilter > span > span{
+  .carousel li:hover::before{
+    backdrop-filter: blur(0) !important;
+    background: linear-gradient(#ffffff00 18%, #000000) !important;
+  }
+
+  .carousel:hover li::before{
+    backdrop-filter: blur(5px);
+  }
+
+.carousel li{
+    position: relative;
     display: flex;
     justify-content: end;
-    gap: 10px;
+    flex-direction: column;
+    border-radius: 15px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 277px;
+    cursor: pointer;
+    color: white;
+    margin-right:5px;
 }
 
-#feedFilter > span > span > button+button{
-    fill: var(--newCommunityTheme-button);
-    color: var(--newCommunityTheme-button);
-    background-color: var(--newCommunityTheme-field);
+.carousel span{
+    pointer-events: none;
+    margin: 5px;
 }
 
-#feedFilter div[role="menu"] button{
-    justify-content: start;
-    border-radius: 0;
-    padding: 5px;
+.carousel li p{height: 20px;}
+
+.carousel li >*:not(img){
     width: 100%;
+    max-height: 50px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    z-index: 2;
 }
 
-#feedFilter div[role="menu"] svg{
-    height: 20px;
-    width: 20px;
+.carousel h1{
+    text-overflow: ellipsis;
+    overflow-y: hidden;
+    white-space: nowrap;
+    font-weight: 700;
+    font-size: 20px;
+    margin: 0px;
+    height: min-content;
+    color: white;
+}
+
+.carousel h1:first-letter {
+    text-transform: uppercase;
+}
+
+.carousel svg{
+    height: 30px;
+    width: 30px;
+    fill: rgb(255, 255, 255);
+    pointer-events: all;
+}
+
+.carousel span svg:hover{
+    fill: var(--newCommunityTheme-button) !important;
+}
+
+.carousel > span{
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    top: 150px;
+    left: 50%;
+    width: 100%;
+    min-width: 0;
+    transform: translateX(-50.5%);
+    max-width: 820px;
+    z-index: 5;
+}
+
+.carousel > span button{
+    fill: var(--newCommunityTheme-body) !important;
+    backdrop-filter: brightness(50%);
+    margin-right: 10px;
+    border-radius: 50%;
 }

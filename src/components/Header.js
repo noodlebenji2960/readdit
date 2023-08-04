@@ -7,65 +7,7 @@ import SubMenu from "./SubMenu";
 import FavoriteToggle from "./FavoriteToggle";
 
 const Header = (props) => {
-    const [darkModeToggle, setDarkModeToggle] = useState(true)
 
-    const toggleDarkMode=(e)=>{
-        if(darkModeToggle==true){
-            setDarkModeToggle(false)
-            darkMode()
-        }else{
-            setDarkModeToggle(true)
-            lightMode()
-        }
-    }
-  
-    function lightMode(e){
-        document.documentElement.style.setProperty("--newCommunityTheme-actionIcon","#878A8C")
-        document.documentElement.style.setProperty("--newCommunityTheme-body","#1A1A1B")
-        document.documentElement.style.setProperty("--newCommunityTheme-bodyText","#D7DADC") //
-        document.documentElement.style.setProperty("--newCommunityTheme-button","#d7dadc")
-        document.documentElement.style.setProperty("--newCommunityTheme-field","#272729")
-        document.documentElement.style.setProperty("--newCommunityTheme-line","#343536")
-        document.documentElement.style.setProperty("--newCommunityTheme-linkText","#0079D3")
-        document.documentElement.style.setProperty("--newCommunityTheme-postTransparent20","#141414")
-        
-        document.documentElement.style.setProperty("--newRedditTheme-actionIcon","#878A8C")
-        document.documentElement.style.setProperty("--newRedditTheme-body","#1c1c1c")
-        document.documentElement.style.setProperty("--newRedditTheme-bodyText","#1c1c1c")
-        document.documentElement.style.setProperty("--newRedditTheme-button","#0079D3")
-        document.documentElement.style.setProperty("--newRedditTheme-field","#F6F7F8")
-        document.documentElement.style.setProperty("--newRedditTheme-line","#EDEFF1")
-        document.documentElement.style.setProperty("--newRedditTheme-linkText","#0079D3")
-  }
-  
-    function darkMode(e){
-        document.documentElement.style.setProperty("--newCommunityTheme-actionIcon","#878A8C")
-        document.documentElement.style.setProperty("--newCommunityTheme-body","#FFFFFF")
-        document.documentElement.style.setProperty("--newCommunityTheme-bodyText","#1c1c1c") //
-        document.documentElement.style.setProperty("--newCommunityTheme-button","#0079D3")
-        document.documentElement.style.setProperty("--newCommunityTheme-field","#F6F7F8")
-        document.documentElement.style.setProperty("--newCommunityTheme-line","rgba(26,26,27,0.1)")
-        document.documentElement.style.setProperty("--newCommunityTheme-linkText","#0079D3")
-        document.documentElement.style.setProperty("--newCommunityTheme-postTransparent20","rgba(255,255,255,0.8)")
-  
-        document.documentElement.style.setProperty("--newRedditTheme-actionIcon","#878A8C")
-        document.documentElement.style.setProperty("--newRedditTheme-body","#FFFFFF")
-        document.documentElement.style.setProperty("--newRedditTheme-bodyText","#1c1c1c")
-        document.documentElement.style.setProperty("--newRedditTheme-button","#0079D3")
-        document.documentElement.style.setProperty("--newRedditTheme-field","#F6F7F8")
-        document.documentElement.style.setProperty("--newRedditTheme-line","#EDEFF1")
-        document.documentElement.style.setProperty("--newRedditTheme-linkText","#0079D3")
-    }
-
-    useEffect(()=>{
-        if(darkModeToggle==false){
-            setDarkModeToggle(false)
-            darkMode()
-        }else{
-            setDarkModeToggle(true)
-            lightMode()
-        }
-    })
 
     return (
         <header>
@@ -163,19 +105,19 @@ const Header = (props) => {
                 </form>
             </div>
             <div>
-                <button>
+                <button title="Popular">
                     <Icon iconName="BsArrowUpRightCircle" />
                 </button>
-                <button>
+                <button title="Chat">
                     <Icon iconName="IoChatbubbleEllipsesOutline" />
                 </button>
-                <button>
+                <button title="Notifications">
                     <Icon iconName="IoNotificationsOutline" />
                 </button>
-                <button>
+                <button title="Create Post">
                     <Icon iconName="IoAddSharp" />
                 </button>
-                <button>
+                <button title="Announcements">
                     <Icon iconName="IoMegaphoneOutline" />
                 </button>
                 <Dropdown
@@ -216,10 +158,10 @@ const Header = (props) => {
                             View Options
                         </div>
                         <button onClick={(e)=>{
-                            toggleDarkMode(e);
+                            props.toggleDarkMode(e);
                         }}>
                             Dark Mode
-                            <Slider state={darkModeToggle}/>
+                            <Slider state={props.darkModeToggle}/>
                         </button>
                     </span>
                     <button>

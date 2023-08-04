@@ -5,7 +5,7 @@ const Slider = (props) => {
   
     return (
         <label className="switch">
-            <input type="checkbox" checked={props.state}/>
+            <input type="checkbox" checked={props.state} onChange={()=>setState(prev=>!prev)}/>
             <span className="slider round"/>
         </label>
     )

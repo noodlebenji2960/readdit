@@ -1,12 +1,12 @@
-import React, {useState} from "react"
+import React, {useEffect, useState} from "react"
 import Icon from "./Icon"
 import Dropdown from "./Dropdown"
 import CommentInput from "./TextEditor"
 import { timePassed } from "../hooks/timestamp"
+import { Sanitize } from "../hooks/sanitize"
 
 const CommentItem = (props) => {
     const [isReplying, setIsReplying] = useState(false);
-    const [comments, setComments] = useState(props.comment.comments)
     const [isHidden, setIsHidden] = useState(props.isHidden)
 
     const onComment = (newComment) => {
@@ -14,8 +14,18 @@ const CommentItem = (props) => {
         setIsReplying(false);
     }
 
+    const RenderComments=()=>{
+        return props.comment.replies && props.comment.replies.data.children.map((reply)=>{
+            return reply.kind!=="more" ? (
+                <CommentItem key={reply.data.id} isHidden={false} comment={reply.data}/>
+            ) : (
+                `${reply.data.count} more repl${reply.data.count>1 ? "ies" : "y"}`
+            )
+        })
+    }
+
     return (
-        <div className="commentItem">
+        <div className="commentItem" id={props.comment.id}>
             <button
                 className="toggleCommentStack"
                 onClick={() => setIsHidden(prev => !prev)}
@@ -30,14 +40,14 @@ const CommentItem = (props) => {
             </button>
             <span>
                 <div className="commentInfo">
-                    {`User123`}
+                    {props.comment.author}
                     <i>
-                        {` • ${timePassed(props.comment.created)}`}
+                        {` • ${timePassed(props.comment.created*1000)}`}
                     </i>
                 </div>
                 {isHidden == false &&
                     <div className="commentItemContent">
-                        {props.comment.body}
+                        <p>{Sanitize(props.comment.body)}</p>
                         <form className="commentItemForm">
                             <span>
                                 <button>
@@ -88,9 +98,7 @@ const CommentItem = (props) => {
                                 </>
                             )}
                         </form>
-                        {comments.map((comment, i) => (
-                            <CommentItem key={comment.id} isHidden={i < 4 ? false : true} comment={comment} />
-                        ))}
+                        {RenderComments()}
                     </div>
                 }
             </span>

@@ -15,6 +15,8 @@ import {
 import {
     BsSearch,
     BsArrowUpRightCircle,
+    BsArrowLeftCircle,
+    BsArrowRightCircle,
     BsLink45Deg,
     BsCodeSlash,
     BsSuperscript,
@@ -50,7 +52,10 @@ import {
 } from "react-icons/cg"
 import { GoGift } from "react-icons/go"
 import { HiHome } from "react-icons/hi"
-import { FiChevronDown } from "react-icons/fi"
+import { 
+    FiChevronDown,
+    FiExternalLink,
+ } from "react-icons/fi"
 import {     
     MdFormatListBulleted,
     MdFormatListNumbered,
@@ -195,6 +200,8 @@ const reactIconsList = [
 
     BsSearch,
     BsArrowUpRightCircle,
+    BsArrowLeftCircle,
+    BsArrowRightCircle,
     BsLink45Deg,
     BsCodeSlash,
     BsSuperscript,
@@ -234,6 +241,7 @@ const reactIconsList = [
     HiHome,
 
     FiChevronDown,
+    FiExternalLink,
 
     MdFormatListBulleted,
     MdFormatListNumbered,

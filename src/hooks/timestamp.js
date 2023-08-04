@@ -1,5 +1,5 @@
 export const timePassed = (timestamp) => {
-    const milliseconds = timestamp * 1000
+    const milliseconds = timestamp
     const dateObject = new Date(milliseconds)
     const today = new Date()
 
@@ -11,7 +11,7 @@ export const timePassed = (timestamp) => {
     const monthNow = today.getMonth()
     const monthsPassed = monthNow>monthCreated && monthNow-monthCreated
     
-    if(monthsPassed<0 && yearsPassed<=0){
+    if(monthsPassed<=0 && yearsPassed<=0){
         const weeks = Math.floor((((Date.now() - dateObject) / 1000) / 60) / 60 / 24 / 7)
         if(weeks<1){
             const days = Math.floor((((Date.now() - dateObject) / 1000) / 60) / 60 / 24)
@@ -22,16 +22,16 @@ export const timePassed = (timestamp) => {
                     if (minutes < 1) {
                         return `${Math.floor((Date.now() - dateObject) / 1000)} seconds ago`
                     } else {
-                        return `${minutes} minutes ago`
+                        return `${minutes} minute${minutes>1 ? "s" : ""} ago`
                     }
                 } else {
-                    return `${hours} hours ago`
+                    return `${hours} hour${hours>1 ? "s" : ""} ago`
                 }
             }else{
-                return `${days} days ago`
+                return `${days} day${days>1 ? "s" : ""} ago`
             }
         }else{
-            return `${weeks} weeks ago`
+            return `${weeks} week${weeks>1 ? "s" : ""} ago`
         }
     }else{
         return dateObject.toLocaleDateString('en-US')

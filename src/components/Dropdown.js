@@ -3,6 +3,7 @@ import React, {useState, useEffect, useRef} from "react"
 const Dropdown = (props) => {
     const [expanded, setExpanded] = useState(false)
     const buttonRef = useRef()
+    const dropdownRef = useRef()
 
     const handleDocClick = (e) =>{
       e.target!==buttonRef.current && setExpanded(false)
@@ -21,12 +22,18 @@ const Dropdown = (props) => {
     }, [])
 
     useEffect(()=>{
-        window.addEventListener("keydown", handleKeyboard)
-        return ()=>{
-            window.removeEventListener("keydown", handleKeyboard)
-        }
+      window.addEventListener("keydown", handleKeyboard)
+      return ()=>{
+          window.removeEventListener("keydown", handleKeyboard)
+      }
     })
-  
+
+    useEffect(()=>{
+      if(expanded==true && props.scrollToIndex!==undefined){
+        dropdownRef.current.scroll(0, dropdownRef.current.children[props.scrollToIndex].offsetTop)
+      }
+    })
+
     return (
       <span>
         <button
@@ -39,9 +46,10 @@ const Dropdown = (props) => {
           }}>
           {props.label}
         </button>
-        <ul
+        <ul 
             className={`dropdown ${expanded == true && "dropdownExpanded"}`}
             role="list"
+            ref={dropdownRef}
             aria-expanded={expanded}
             style={props.menuPlacement}
             onMouseDown={(e)=>e.stopPropagation()}
@@ -49,9 +57,9 @@ const Dropdown = (props) => {
           {props.children.map((child,i) => {
             return (
                 <li
-                    key={`dropdownOption${i}`}
-                    role="listitem"
-                    tabIndex={i+1}
+                  key={`dropdownOption${i}`}
+                  role="listitem"
+                  tabIndex={i+1}
                 >
                     {child}
                 </li>

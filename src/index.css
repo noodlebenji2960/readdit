@@ -28,11 +28,16 @@ i {
 }
 
 button{
+    white-space: nowrap;
     cursor: pointer;
 }
 
 label{
     user-select: none;
+}
+
+p{
+    white-space: pre-wrap;
 }
 
 a{
@@ -69,5 +74,32 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     --newRedditTheme-field: #F6F7F8;
     --newRedditTheme-line: #EDEFF1;
 
+    --newRedditTheme-bg: #000000;
+
     fill: var(--newCommunityTheme-bodyText);
+}
+
+video{
+    max-height: 80vh;
+}
+
+/* width */
+::-webkit-scrollbar  {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: var(--newCommunityTheme-line);
+    border-bottom: 5px solid var(--newCommunityTheme-body);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: var(--newCommunityTheme-actionIcon);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: var(--newCommunityTheme-bodyText);
 }

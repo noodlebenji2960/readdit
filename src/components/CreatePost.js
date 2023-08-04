@@ -16,7 +16,7 @@ const CreatePost = () => {
     const inputRef = useRef();
 
     const toggleMenu = () => {
-        setMenuStateCollapsed(false)
+        setMenuStateCollapsed(prev=>!prev)
     }
 
     const switchTab = (e, tab) => {
@@ -123,7 +123,7 @@ const CreatePost = () => {
                     type="text"
                     maxLength="300"
                     placeholder={menuStateCollapsed == true ? "Create Post" : "Title"}
-                    onMouseDown={() => toggleMenu()}
+                    onMouseDown={() => setMenuStateCollapsed(false)}
                     onChange={e => setTitleCharCount(e.target.value.length)} />
                 {menuStateCollapsed == false ?
                     <div>
@@ -248,6 +248,9 @@ const CreatePost = () => {
                         </button>
                     </span>
                     <span>
+                        <button onClick={(e)=>toggleMenu()}>
+                            Cancel
+                        </button>
                         <button>Save Draft</button>
                         <button>Post</button>
                     </span>
