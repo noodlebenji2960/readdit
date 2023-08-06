@@ -3,8 +3,6 @@ import React, { useEffect, useState } from "react";
 import Dropdown from "./Dropdown"
 import Icon from "./Icon";
 
-import { getIP } from "../hooks/getIP";
-
 
 const FeedFilter = (props) => {
     const [activeButton, setActiveButton] = useState()
@@ -59,6 +57,11 @@ const FeedFilter = (props) => {
         ["Turkey",          "TR"],
         ["United Kingdom",  "UK"],
     ]
+
+    async function getIP(){
+        return await fetch('http://ip-api.com/json/')
+        .then(response => response.json())
+    }
 
     const style = {
         fill: "var(--newCommunityTheme-button)",
