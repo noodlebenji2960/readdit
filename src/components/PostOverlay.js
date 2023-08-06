@@ -25,7 +25,7 @@ function PostOverlay(props) {
         )
     } else if (props.post.post_hint == "hosted:video") {
         return (
-            <video preload="auto" autoPlay="autoplay" controls>
+            <video preload="auto" autoPlay="autoplay" controls loop>
                 <source src={props.post.media.reddit_video.fallback_url + "#t=0.5"} />
             </video>
         )

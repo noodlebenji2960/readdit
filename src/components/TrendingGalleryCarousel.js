@@ -60,7 +60,7 @@ const TrendingGalleryCarousel = (props) => {
             </span>
             {props.popular.map((ele, index)=>{
                 return ele.thumbnail.includes("https") && (<>
-                <li key={ele.id}>
+                <li key={ele.id} onClick={(e)=>props.setActivePostOverlay(ele)}>
                     <img
                       src={ele.thumbnail}
                       style={{

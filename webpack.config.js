@@ -6,9 +6,11 @@ module.exports = {
   output: {
     filename: "main.js",
     path: path.resolve(__dirname, "build"),
+    publicPath: '/'
   },
   devtool: 'eval-source-map',
   devServer: {
+    historyApiFallback: true,
     static: {
       directory: path.join(__dirname, "build"),
     },

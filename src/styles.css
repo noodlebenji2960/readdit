@@ -463,6 +463,15 @@ button[title]:hover::before {
     border-color: var(--newRedditTheme-actionItem);
 }
 
+.post>div:nth-child(2) div:nth-child(2) > img:nth-child(2){
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: unset !important;
+    margin: auto;
+}
+
 .post>div:first-of-type {
     grid-area: 1/ 1 / 2 / 2;
     display: flex;
@@ -1446,16 +1455,20 @@ header button[title]::before{
     fill: var(--newCommunityTheme-button) !important;
 }
 
+.carousel:has(span svg:hover) li::before{
+    backdrop-filter: blur(0px);
+}
+
 .carousel > span{
     position: absolute;
     display: flex;
     justify-content: space-between;
     top: 150px;
     left: 50%;
-    width: 100%;
+    width: 90%;
     min-width: 0;
     transform: translateX(-50.5%);
-    max-width: 820px;
+    max-width: 800px;
     z-index: 5;
 }
 
@@ -1464,4 +1477,159 @@ header button[title]::before{
     backdrop-filter: brightness(50%);
     margin-right: 10px;
     border-radius: 50%;
+} 
+
+.accountManager{
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    padding: 0 0 0 min(20vw, 200px);
+    z-index: 99;
+    background: url(../public/assets/accountManager.png);
+    background-repeat: no-repeat;
+    background-size: 300px;
+    background-position: bottom left;
+    color: var(--newCommunityTheme-bodyText);
+}
+
+.accountManager div{
+    position: relative;
+    display: flex;
+    width: 80%;
+    gap: 10px;
+    color: var(--newCommunityTheme-actionIcon);
+    font-size: 13px;
+    font-weight: 600;
+    margin: 30px 0;
+}
+
+.accountManager form div::before, .accountManager form div::after{
+    content: "";
+    position: relative;
+    background-color: var(--newCommunityTheme-line);
+    height: 1px;
+    width: 100px;
+    top: 50%;
+}
+
+.accountManager button{
+    height: 40px;
+    outline: var(--newCommunityTheme-line) 1px solid;
+    background: var(--newCommunityTheme-body);
+    border-radius: 20px;
+    padding: 10px;
+    margin: 10px 0;
+    width: 80%;
+    transition: all 0.2s ease-in-out;
+    color: var(--newCommunityTheme-bodyText) !important;
+}
+
+.accountManager button:hover{
+    background: var(--newCommunityTheme-button);
+}
+
+.accountManager form > span:nth-child(3) button{
+    background-color: var(--newCommunityTheme-button);
+    font-weight: 600;
+    color: white;
+}
+
+.accountManager > form{
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    flex-direction: column;
+    background-color: var(--newCommunityTheme-body);
+    height: 100%;
+    width: 80vw;
+    border-left: var(--newCommunityTheme-body) 50px solid;
+}
+
+.accountManager input{
+    display: flex;
+    outline: var(--newCommunityTheme-line) 1px solid;
+    height: 40px;
+    width: 100%;
+    border-radius: 5px;
+    margin: 10px 0 10px 0;
+    padding: 5px 0 0 10px;
+}
+
+.accountManager input::placeholder{
+    position: absolute;
+    transform: translateY(0%);
+    color: var(--newCommunityTheme-actionIcon);
+    transition: all 0.5s ease-in-out;
+    font-weight: 600;
+    top: 15px;
+}
+
+.accountManager input{
+    outline: 0;
+    width: 100%;
+    transition: all .2s ease-in-out;
+    height: 20px;
+    padding: 22px 12px 10px;
+    border: 1px solid rgba(0,0,0,.1);
+    border-radius: 4px;
+    background-position: center;
+    background-repeat: no-repeat, repeat;
+    background-size: cover;
+}
+
+.accountManager input:invalid   {
+    background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)),
+                linear-gradient(red, red);
+    outline: red 1px solid;
+}
+.accountManager input:valid{
+    background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)),
+                linear-gradient(var(--newCommunityTheme-button), var(--newCommunityTheme-button));
+    outline: var(--newCommunityTheme-button) 1px solid;
+}
+
+.accountManager label[for]{
+    position: relative;
+}
+
+.accountManager label[for]::after{
+    font-size: 12px;
+    text-transform: uppercase;
+    margin-left: 10px;
+    position: absolute;
+    height: 20px;
+    width: 100%;
+    transition: 0.2s ease-in-out all;
+    font-weight: 600;
+    pointer-events: none;
+    color: var(--newCommunityTheme-actionIcon);
+    display: flex;
+    top: -45px;
+}
+
+.accountManager label[for="loginUsername"]::after{
+    content: "username";
+}
+
+.accountManager label[for="loginPassword"]::after{
+    content: "password";
+}
+
+.accountManager input:first-of-type:hover+label[for="loginUsername"]::after, 
+.accountManager input:first-of-type:focus+label[for="loginUsername"]::after, 
+input:not(:placeholder-shown)+label[for="loginUsername"]::after{
+    top: -55px;
+    font-size: 9px;
+}
+
+.accountManager input:last-of-type:hover+label[for="loginPassword"]::after, 
+.accountManager input:last-of-type:focus+label[for="loginPassword"]::after, 
+input:not(:placeholder-shown)+label[for="loginPassword"]::after{
+    top: -55px;
+    font-size: 9px;
 }
