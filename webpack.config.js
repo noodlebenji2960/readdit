@@ -5,19 +5,16 @@ module.exports = {
   entry: "./src/index.js",
   output: {
     filename: "main.js",
-    path: path.resolve(__dirname, "build"),
+    path: path.resolve(__dirname+"/readdit", "build"),
     publicPath: '/'
   },
   devtool: 'eval-source-map',
   devServer: {
     historyApiFallback: true,
-    static: {
-      directory: path.join(__dirname, "build"),
-    },
+    hot: true,
     port: 3000,
   },
   module: {
-    // exclude node_modules
     rules: [
       {
         test: /\.(js|jsx)$/,

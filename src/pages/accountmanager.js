@@ -60,7 +60,8 @@ export const LogIn = (props) => {
           </a>
         </span>
       </form>
-    </div>)
+    </div>
+  )
 }
 
 export const Register = (props) => {

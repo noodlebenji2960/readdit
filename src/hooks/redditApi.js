@@ -10,7 +10,6 @@ export async function getComments(id) {
 }
 
 export async function getPopular(geo_filter, after){
-  console.log(after)
   console.log(`reddit internal bug cannot process geo_filters`)
   const popular = await fetch(
     `https://www.reddit.com/r/popular/.json?${geo_filter !== undefined ? `&geo_filter=${geo_filter}` : ""}${after !== undefined ? `&after=${after}` : ""}`
@@ -23,14 +22,14 @@ export async function getPopular(geo_filter, after){
 
 export async function handleHeaderSearch(searchTerm, searchLimit){
   const communities = await fetch(
-    `http://www.reddit.com/search.json?q=${searchTerm}&type=sr&limit=${searchLimit}`
+    `https://www.reddit.com/search.json?q=${searchTerm}&type=sr&limit=${searchLimit}`
   )
     .then((res) => res.json())
     .then((data) => data.data.children.map((data) => data.data))
     .catch((err) => console.log(err))
 
   const people = await fetch(
-    `http://www.reddit.com/search.json?q=${searchTerm}&type=user&limit=${searchLimit}`
+    `https://www.reddit.com/search.json?q=${searchTerm}&type=user&limit=${searchLimit}`
   )
     .then((res) => res.json())
     .then((data) => data.data.children.map((data) => data.data))
@@ -43,7 +42,7 @@ export function searchFetch (searchTerm, searchLimit, sortBy) {
     // fetch api of reddit
     return (
       fetch(
-        `http://www.reddit.com/search.json?q=${searchTerm}&sort=relevance&limit=${searchLimit}`
+        `https://www.reddit.com/search.json?q=${searchTerm}&sort=relevance&limit=${searchLimit}`
       )
         .then((res) => res.json())
         .then((data) => data.data.children.map((data) => data.data))

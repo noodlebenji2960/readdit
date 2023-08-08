@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 
+import { Link } from "react-router-dom";
+
 import Icon from "./Icon";
 import Dropdown from "./Dropdown";
 import Slider from "./Slider";
@@ -341,8 +343,10 @@ const Header = (props) => {
                         <button>Moderator Code of Conduct</button>
                     </SubMenu>
                     <button>
+                        <Link to="/readdit/hello">
                         <Icon iconName="IoLogOutOutline" />
                         Log Out
+                        </Link>
                     </button>
                 </Dropdown>
             </div>

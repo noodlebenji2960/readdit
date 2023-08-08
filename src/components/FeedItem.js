@@ -1,16 +1,12 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 
-import CommentInput from "./TextEditor"
-import CommentItem from "./CommentItem"
 import Icon from "./Icon"
 
 import { timePassed } from "../hooks/timestamp"
-import { getComments } from "../hooks/redditApi"
 
 import Dropdown from "./Dropdown"
 
 function FeedItem(props) {
-  const [comments, setComments] = useState()
 
   const PostType = () => {
     if (props.post.post_hint == "image") {
@@ -50,12 +46,7 @@ function FeedItem(props) {
     }
   }
 
-  const onComment = (newComment) => {
-    setComments(prev => [newComment, ...prev]);
-  }
-
   return (
-    <>
       <div className="post" onClick={() => props.onClick()} style={{cursor:"pointer"}}>
         <div>
           <Icon iconName="RxThickArrowUp" />
@@ -124,7 +115,6 @@ function FeedItem(props) {
           </div>
         </div>
       </div>
-    </>
   )
 }
 

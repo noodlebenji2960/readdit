@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import Dropdown from "./Dropdown"
 import Icon from "./Icon";
 
+import { getIP } from "../hooks/getIP";
+
 
 const FeedFilter = (props) => {
     const [activeButton, setActiveButton] = useState()
@@ -20,7 +22,7 @@ const FeedFilter = (props) => {
     ]
 
     const countries = [
-        ["Everywhere",       "GLOBAL"],
+        ["Everywhere",      "GLOBAL"],
         ["United States",   "US"],
         ["Argentina",       "AR"],
         ["Australia",       "AU"],
@@ -58,11 +60,6 @@ const FeedFilter = (props) => {
         ["United Kingdom",  "UK"],
     ]
 
-    async function getIP(){
-        return await fetch('http://ip-api.com/json/')
-        .then(response => response.json())
-    }
-
     const style = {
         fill: "var(--newCommunityTheme-button)",
         color: "var(--newCommunityTheme-button)",
@@ -70,7 +67,7 @@ const FeedFilter = (props) => {
     }
 
     useEffect(() => {
-        setLocation(getIP().then((data) => setHot(data.country)))
+        setLocation(getIP().then((data) => setHot(data.country_name)))
     }, [])
 
     useEffect(() => {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react"
+import React, { useEffect, useState } from "react"
 
 import PostOverlay from "../components/PostOverlay"
 import FeedItem from "../components/FeedItem"
@@ -50,9 +50,9 @@ function Feed() {
           <TrendingGalleryCarousel popular={popular} setActivePostOverlay={setActivePostOverlay} />
         </>)}
         <FeedFilter fetchPopular={fetchPopular} />
-        {popular.length > 0 && popular.map((post) => {
+        {popular.map((post) => {
           return (
-            <FeedItem post={post} onClick={(e) => setActivePostOverlay(post)} />
+            <FeedItem key={crypto.randomUUID()} post={post} onClick={(e) => setActivePostOverlay(post)} />
           )
         })}
       </div>
