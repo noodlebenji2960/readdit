@@ -6,6 +6,7 @@ import redditMouse2 from "../../public/assets/redditMouse2.png"
 import CommentInput from "./TextEditor";
 import Dropdown from "./Dropdown";
 import Icon from "./Icon";
+import { useAuth } from "./AuthContext";
 
 const CreatePost = () => {
     const [menuStateCollapsed, setMenuStateCollapsed] = useState(true)
@@ -14,6 +15,7 @@ const CreatePost = () => {
     const [dragActive, setDragActive] = useState(false);
     const [dragFilesInHand, setDragFilesInHand] = useState()
     const inputRef = useRef();
+    const auth = useAuth()
 
     const toggleMenu = () => {
         setMenuStateCollapsed(prev=>!prev)
@@ -78,7 +80,7 @@ const CreatePost = () => {
                         }>
                             <div role="heading">Your Profile</div>
                             <button>
-                                <Icon iconName="ProfilePictureIcon" />
+                                <img src={auth.user.icon_img}/>
                                 u/noodlebenji
                             </button>
                             <div role="heading">Your Communities</div>
@@ -117,7 +119,7 @@ const CreatePost = () => {
                 : <></>}
             <div className="main">
                 <div>
-                    <Icon iconName="ProfilePictureIcon" />
+                    <img src={auth.user.icon_img}/>
                 </div>
                 <input
                     type="text"

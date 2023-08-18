@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Dropdown from "./Dropdown"
 import Icon from "./Icon";
 
-import { getIP } from "../hooks/getIP";
+import { getIP } from "../functions/getIP";
 
 
 const FeedFilter = (props) => {

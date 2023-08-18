@@ -85,7 +85,7 @@ const CommentInput = (props) => {
           </button>}
           <button onClick={(e) => {
             e.preventDefault()
-            props.onComment({ id: crypto.randomUUID(), body: commentBody, comments: [], created:Date.now()/1000})
+            props.onComment(commentBody, props.parentID)
             setCommentBody("");
           }}>
             Comment

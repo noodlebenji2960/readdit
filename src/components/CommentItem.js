@@ -2,15 +2,17 @@ import React, {useEffect, useState} from "react"
 import Icon from "./Icon"
 import Dropdown from "./Dropdown"
 import CommentInput from "./TextEditor"
-import { timePassed } from "../hooks/timestamp"
-import { Sanitize } from "../hooks/sanitize"
+import { timePassed } from "../functions/timestamp"
+import { Sanitize } from "../functions/sanitize"
+import { comment } from "../functions/redditApi"
+import humanizeNumber from "../functions/humanizeNumber"
 
 const CommentItem = (props) => {
     const [isReplying, setIsReplying] = useState(false);
     const [isHidden, setIsHidden] = useState(props.isHidden)
 
-    const onComment = (newComment) => {
-        setComments(prev => [newComment, ...prev]);
+    const onComment = (text) => {
+        comment(text, props.comment.name)
         setIsReplying(false);
     }
 
@@ -47,12 +49,13 @@ const CommentItem = (props) => {
                 </div>
                 {isHidden == false &&
                     <div className="commentItemContent">
-                        <p>{Sanitize(props.comment.body)}</p>
+                        {Sanitize(props.comment.body)}
                         <form className="commentItemForm">
                             <span>
                                 <button>
                                     <Icon iconName="RxThickArrowUp" />
                                 </button>
+                                {humanizeNumber(props.comment.ups)}
                                 <button>
                                     <Icon iconName="RxThickArrowDown" />
                                 </button>

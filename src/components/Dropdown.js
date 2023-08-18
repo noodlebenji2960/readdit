@@ -15,11 +15,11 @@ const Dropdown = (props) => {
     }
   
     useEffect(() => {
-      document.body.addEventListener("mousedown", handleDocClick)
+      window.addEventListener("mousedown", handleDocClick)
       return ()=>{
-        document.body.removeEventListener("mousedown", handleDocClick)
+        window.removeEventListener("mousedown", handleDocClick)
       }
-    }, [])
+    })
 
     useEffect(()=>{
       window.addEventListener("keydown", handleKeyboard)

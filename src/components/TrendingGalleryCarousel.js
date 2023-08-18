@@ -22,31 +22,32 @@ const TrendingGalleryCarousel = (props) => {
             return carouselRef.current.scrollTo(0,0)
         }
     }
+
+    let interval;
+    const setCarouselInterval=()=>{
+        interval = setInterval(() => {
+        nextPage()
+        }, 5000);
+    }
+
+    const clearCarouselInterval = ()=>{clearInterval(interval)}
     
     useEffect(() => {
-        let interval;
-
-        const setCarouselInterval=()=>{
-            interval = setInterval(() => {
-            nextPage()
-            }, 5000);
-        }
-
-        const clearCarouselInterval = ()=>{clearInterval(interval)}
-
-        carouselRef.current.addEventListener("mouseenter", clearCarouselInterval)
-        carouselRef.current.addEventListener("mouseover", clearCarouselInterval)
-        carouselRef.current.addEventListener("mouseleave", setCarouselInterval)
-
         setCarouselInterval()
 
-        return () => {
-            carouselRef.current.removeEventListener("mouseenter", clearCarouselInterval)
-            carouselRef.current.removeEventListener("mouseover", clearCarouselInterval)
-            carouselRef.current.removeEventListener("mouseleave", setCarouselInterval)
-            clearInterval(interval)
-        };
       }, []);
+
+      useEffect(()=>{
+        if(carouselRef.current){
+            carouselRef.current.addEventListener("mouseenter", clearCarouselInterval)
+            carouselRef.current.addEventListener("mouseover", clearCarouselInterval)
+            carouselRef.current.addEventListener("mouseleave", setCarouselInterval)
+            
+            return () => {
+                clearInterval(interval)
+            };
+        }
+      },[])
 
     return (
         <ul className="carousel" ref={carouselRef}>
@@ -59,7 +60,7 @@ const TrendingGalleryCarousel = (props) => {
                 </button>
             </span>
             {props.popular.map((ele, index)=>{
-                return ele.thumbnail.includes("https") && (
+                return (!ele.thumbnail.includes("https://external-preview") && ele.thumbnail!=="self") && (
                 <li key={ele.id} onClick={(e)=>props.setActivePostOverlay(ele)}>
                     <img
                       src={ele.thumbnail}

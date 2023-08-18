@@ -1,8 +1,22 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react";
 
-export const LogIn = (props) => {
-  const [username, setUsername] = useState()
-  const [password, setPassword] = useState()
+import { useAuth } from "../components/AuthContext";
+
+import { authorizationURL, setRandomStringCookie } from "../functions/redditApi";
+import { useNavigate } from "react-router-dom";
+
+export const AccountManager = (props) => {
+  const auth = useAuth()
+  const navigate = useNavigate()
+
+  const handleLoginButtonClick = () => {
+    setRandomStringCookie()
+    window.location.href = authorizationURL;
+  };
+
+  useEffect(()=>{
+    auth.isAuthenticated==true && navigate("/")
+  })
 
   return (
     <div className="accountManager">
@@ -34,8 +48,6 @@ export const LogIn = (props) => {
               placeholder=" "
               minLength={3}
               maxLength={20}
-              onChange={(e) => setUsername(e.value)}
-              value={username}
             />
             <label htmlFor="loginUsername" />
             <input
@@ -43,13 +55,11 @@ export const LogIn = (props) => {
               type="password"
               required
               placeholder=" "
-              onChange={(e) => setPassword(e.value)}
-              value={password}
             />
             <label htmlFor="loginPassword" />
           </fieldset>
-          <button>
-            LOG IN
+          <button onClick={() => handleLoginButtonClick()}>
+            Click to Login
           </button>
         </span>
         <p>Forgot your username and password?</p>

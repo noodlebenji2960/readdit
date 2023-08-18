@@ -21,5 +21,5 @@ export const Sanitize=(string) =>{
     return (href && label) && '<a href="' + href + '" target=”_blank”>' + label + '</a>';
   })
 
-    return <div dangerouslySetInnerHTML={{ __html: htmlString }} />
+    return <p dangerouslySetInnerHTML={{ __html: htmlString }} />
 }

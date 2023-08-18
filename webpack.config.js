@@ -1,12 +1,13 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { EnvironmentPlugin } = require('webpack');
 
 module.exports = {
   entry: "./src/index.js",
   output: {
     filename: "main.js",
-    path: path.resolve(__dirname+"/readdit", "build"),
-    publicPath: '/'
+    path: path.resolve(__dirname, "build"),
+    publicPath: "/readdit/",
   },
   devtool: 'eval-source-map',
   devServer: {

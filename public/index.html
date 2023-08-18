@@ -6,8 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>readdit - Dive into anything</title>
     <link rel="icon" type="image/x-icon" href="data:image/x-icon;,">
+    <script>
+        if(window.location.search.substring(0,7)=="?state="){
+            window.open(`http://localhost:3000/readdit/#/account_manager/${window.location.search}`,"_self")
+        }
+    </script>
 </head>
 <body>
-    <div id="root"></div>
+    <div id="root">
+    </div>
 </body>
 </html>

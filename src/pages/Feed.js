@@ -6,17 +6,25 @@ import CreatePost from "../components/CreatePost"
 import FeedFilter from "../components/FeedFilter"
 import TrendingGalleryCarousel from "../components/TrendingGalleryCarousel"
 
-import { getPopular } from "../hooks/redditApi"
+import { getPopular } from "../functions/redditApi"
+
+import { useAuth } from "../components/AuthContext"
 
 function Feed() {
   const [activePostOverlay, setActivePostOverlay] = useState()
   const [feedData, setFeedData] = useState()
   const [popular, setPopular] = useState([])
   const [user, setUser] = useState(false)
+  const auth = useAuth()
 
   const fetchPopular = (geo_filter) => {
     let after = feedData !== undefined ? feedData : "GLOBAL"
-    getPopular(geo_filter, after).then((data) => {
+
+    auth ? getPopular(geo_filter, after).then((data) => {
+      setFeedData(data.data.after)
+      setPopular(popular.concat(data.data.children.map((data) => data.data)))
+    }) :
+    getPopularAsAuth(geo_filter, after).then((data) => {
       setFeedData(data.data.after)
       setPopular(popular.concat(data.data.children.map((data) => data.data)))
     })
@@ -44,7 +52,7 @@ function Feed() {
         </>
       }
       <div className="feed">
-        {user == true ? (<>
+        {auth.isAuthenticated==true ? (<>
           <CreatePost />
         </>) : (<>
           <TrendingGalleryCarousel popular={popular} setActivePostOverlay={setActivePostOverlay} />

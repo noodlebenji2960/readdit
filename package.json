@@ -2,7 +2,7 @@
   "name": "readdit",
   "version": "1.0.0",
   "main": "index.js",
-  "homepage": "http://noodlebenji2960.github.io/readdit",
+  "homepage": "https://noodlebenji2960.github.io/readdit",
   "scripts": {
     "build": "webpack --mode production",
     "start": "webpack serve --mode development",

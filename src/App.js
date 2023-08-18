@@ -1,23 +1,19 @@
 import React, { useEffect, useState } from "react"
+
 import "./styles.css"
 import "./index.css"
 import Header from "./components/Header"
 
 import Feed from "./pages/Feed"
+import { Route, Routes,useNavigate } from "react-router-dom"
+import { AccountManager } from "./pages/accountmanager"
+import NoMatch from "./pages/NotFound"
+import PostOverlay from "./components/PostOverlay"
 
 function App() {
   const [darkModeToggle, setDarkModeToggle] = useState(false)
   const [user, setUser] = useState(false)
-
-  const client_id = "";
-  const redirect = "";
-
-  const login = () =>{
-    window.open(
-      `https_//www.reddit.com/api/v1/authorize?client_id=${client_id}&response_type=code&state=yolo&redirect_uri=${redirect}&duration=permanent&scope=identity,submit,save`,
-      "_self"
-    )
-  }
+  const navigate = useNavigate();
 
   const toggleDarkMode = (e) => {
     if (darkModeToggle == true) {
@@ -82,7 +78,11 @@ function App() {
   return (
     <>
       <Header user={user} toggleDarkMode={toggleDarkMode} darkModeToggle={darkModeToggle} />
-      <Feed/>
+      <Routes>
+        <Route path={`/`} element={<Feed/>}/>
+        <Route path={`account_manager`} element={<AccountManager/>}/>
+        <Route path={`*`} element={<NoMatch/>}/>
+      </Routes>
     </>
   )
 }

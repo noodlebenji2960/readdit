@@ -1,15 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import App from "./App";
-import { LogIn } from "./pages/accountmanager";
+import { AuthProvider } from "./components/AuthContext";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <Router>
-    <Routes>
-        <Route path={`/`} element={<App/>}/>
-        <Route path={`/readdit`} element={<LogIn/>}/>
-    </Routes>
-  </Router>
+  <AuthProvider>
+    <Router basename="/">
+      <App/>
+    </Router>
+  </AuthProvider>
 );

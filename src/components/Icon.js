@@ -264,13 +264,14 @@ const reactIconsList = [
 const iconsList = reactIconsList.concat(customIconsList)
 
 function Icon(props){
+
     return (
         <>
-            {iconsList.find((icon)=>{
+            {props.iconName ? iconsList.find((icon)=>{
                 if(icon.name == props.iconName){
                     return true
                 }
-            })()}
+            })() : console.error(`ICON: invalid props`)}
         </>
     );
   };

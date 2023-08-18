@@ -3,46 +3,19 @@ import React, { useEffect, useState } from "react"
 import CommentInput from "./TextEditor"
 import CommentItem from "./CommentItem"
 import Icon from "./Icon"
-
-import { timePassed } from "../hooks/timestamp"
+import { timePassed } from "../functions/timestamp"
 import Dropdown from "./Dropdown"
-import { getComments } from "../hooks/redditApi"
-import { Sanitize } from "../hooks/sanitize"
+import { getComments, getCommentsAsAuth } from "../functions/redditApi"
+import { useAuth } from "./AuthContext"
+import { comment } from "../functions/redditApi"
+import PostType from "./PostType"
 
 function PostOverlay(props) {
   const [comments, setComments] = useState()
+  const auth = useAuth()
 
-  const PostType = () => {
-    if (props.post.post_hint == "image") {
-        return (
-            <img
-                src={props.post.thumbnail}
-                style={{
-                    width: props.post.thumbnail_width + "px",
-                    height: props.post.thumbnail_height + "px"
-                }}
-            />
-        )
-    } else if (props.post.post_hint == "hosted:video") {
-        return (
-            <video preload="auto" autoPlay="autoplay" controls loop>
-                <source src={props.post.media.reddit_video.fallback_url + "#t=0.5"} />
-            </video>
-        )
-    } else if (props.post.post_hint == "rich:video") {
-        const src = props.post.media_embed.content.match(/src\="([^\s]*)\s/)[1].slice(0, -1)
-        return (
-            <iframe src={src} />
-        )
-    } else if (props.post.post_hint == "link") {
-        return (
-            <img src={props.post.preview.images[0].url}/>
-        )
-    } else if (props.post.post_hint == undefined && props.post.selftext !== undefined) {
-        return Sanitize(props.post.selftext)
-    } else {
-
-    }
+  const onComment = (text) => {
+    comment(text, props.post.name)
 }
 
 const RenderComments=(comment)=>{
@@ -87,12 +60,12 @@ function checkMore(children) {
   })
 }
 
-  const onComment = (newComment) => {
-    setComments(prev => [newComment, ...prev]);
-  }
-
   useEffect(()=>{
-    getComments(props.post.id).then((data)=>setComments(data))
+    if(auth.isAuthenticated==true){
+      getCommentsAsAuth(props.post.id).then((data)=>setComments(data))
+    }else{
+      getComments(props.post.id).then((data)=>setComments(data))
+    }
   },[])
 
   useEffect(()=>{
@@ -129,7 +102,7 @@ function checkMore(children) {
           </div>
           <div>
             <h1>{props.post.title}</h1>
-            <PostType/>
+            <PostType post={props.post}/>
           </div>
           <div>
             <button>
